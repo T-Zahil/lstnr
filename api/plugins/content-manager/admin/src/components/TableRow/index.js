@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { isEmpty, isObject, toString } from 'lodash';
+import { isEmpty, isObject } from 'lodash';
 
 import IcoContainer from 'components/IcoContainer';
 
@@ -41,15 +41,11 @@ class TableRow extends React.Component {
       case 'decimal':
         return value && !isEmpty(value.toString()) ? value.toString() : '-';
       case 'boolean':
-        return value !== null ? toString(value) : '-';
+        return value && !isEmpty(value.toString()) ? value.toString() : '-';
       case 'date':
       case 'time':
       case 'datetime':
       case 'timestamp': {
-        if (value === null) {
-          return '-';
-        }
-
         const date = value && isObject(value) && value._isAMomentObject === true ?
           value :
           moment(value);
@@ -86,7 +82,7 @@ class TableRow extends React.Component {
 
     cells.push(
       <td key='action' className={styles.actions}>
-        <IcoContainer icons={[{ icoType: 'pencil', onClick: () => this.handleClick(this.props.destination) }, { id: this.props.record.id, icoType: 'trash', onClick: this.props.onDelete }]} />
+        <IcoContainer icons={[{ icoType: 'pencil' }, { id: this.props.record.id, icoType: 'trash', onClick: this.props.onDelete }]} />
       </td>
     );
 

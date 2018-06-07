@@ -39,15 +39,15 @@ class SelectMany extends React.Component {
 
   getOptions = query => {
     const params = {
-      _limit: 20,
-      _start: this.state.toSkip,
+      limit: 20,
+      skip: this.state.toSkip,
       source: this.props.relation.plugin || 'content-manager',
     };
 
     // Set `query` parameter if necessary
     if (query) {
-      delete params._limit;
-      delete params._skip;
+      delete params.limit,
+      delete params.skip,
       params[`${this.props.relation.displayedAttribute}_contains`] = query;
     }
     // Request URL

@@ -30,14 +30,8 @@ const makeSelectParams = () => createSelector(
   (substate) => substate.get('params').toJS(),
 );
 
-const makeSelectFilters = () => createSelector(
-  selectListPageDomain(),
-  (substate) => substate.get('filters').toJS(),
-);
-
 export default makeSelectListPage;
 export {
   makeSelectParams,
-  makeSelectFilters,
   selectListPageDomain,
 };

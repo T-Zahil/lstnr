@@ -143,7 +143,7 @@ module.exports = {
       }
     });
 
-    const provider = process.platform === 'win32' ? ctx.request.url.split('\\')[2] : ctx.request.url.split('/')[2];
+    const provider = ctx.request.url.split('/')[2];
     const config = grantConfig[provider];
 
     if (!_.get(config, 'enabled')) {

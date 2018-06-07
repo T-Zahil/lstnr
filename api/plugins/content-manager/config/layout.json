@@ -1,1 +1,116 @@
-{}
+{
+  "Blog-Category": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
+  },
+  "blogCategory": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
+  },
+  "blogPost": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
+  },
+  "blogcategory": {
+    "attributes": {
+      "slug": {
+        "appearance": ""
+      }
+    }
+  },
+  "blogpost": {
+    "attributes": {
+      "slug": {
+        "appearance": ""
+      },
+      "excerpt": {
+        "appearance": "WYSIWYG"
+      },
+      "content": {
+        "appearance": "WYSIWYG"
+      }
+    }
+  },
+  "product": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      },
+      "price": {
+        "appearance": ""
+      },
+      "description": {
+        "appearance": ""
+      },
+      "slug": {
+        "appearance": ""
+      },
+      "mainImg": {
+        "appearance": ""
+      },
+      "img2": {
+        "appearance": ""
+      },
+      "img3": {
+        "appearance": ""
+      }
+    }
+  },
+  "productCat": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      },
+      "slug": {
+        "appearance": ""
+      }
+    }
+  },
+  "product color": {
+    "attributes": {
+      "color": {
+        "appearance": ""
+      }
+    }
+  },
+  "productcolor": {
+    "attributes": {
+      "color": {
+        "appearance": ""
+      }
+    }
+  },
+  "productbrand": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      },
+      "slug": {
+        "appearance": ""
+      }
+    }
+  },
+  "productsize": {
+    "attributes": {
+      "size": {
+        "appearance": ""
+      }
+    }
+  },
+  "test": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
+  }
+}

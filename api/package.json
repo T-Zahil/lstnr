@@ -20,9 +20,9 @@
   },
   "dependencies": {
     "lodash": "4.x.x",
-    "strapi": "3.0.0-alpha.12.2",
-    "strapi-bookshelf": "3.0.0-alpha.12.2",
-    "strapi-knex": "3.0.0-alpha.12.2",
+    "strapi": "3.0.0-alpha.12.1.3",
+    "strapi-bookshelf": "3.0.0-alpha.12.1.3",
+    "strapi-knex": "3.0.0-alpha.12.1.3",
     "knex": "latest",
     "mysql": "2.15.0"
   },
@@ -39,7 +39,7 @@
     }
   ],
   "strapi": {
-    "uuid": "e92bb818-40e6-47ec-aea3-ec46ff1bbae7"
+    "uuid": "389e9c2f-4730-443a-bc3e-eefffe68eb2f"
   },
   "engines": {
     "node": ">= 9.0.0",

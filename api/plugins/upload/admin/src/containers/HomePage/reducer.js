@@ -26,9 +26,9 @@ const initialState = fromJS({
   search: '',
   uploadedFiles: List([]),
   params: Map({
-    _sort: 'hash',
-    _limit: 10,
-    _page: 1,
+    sort: 'hash',
+    limit: 10,
+    page: 1,
   }),
 });
 

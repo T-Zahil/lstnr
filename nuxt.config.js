@@ -1,3 +1,7 @@
+const { 
+  API_ROOT 
+} = require( './config' )
+
 module.exports = {
   /*
    ** Headers of the page
@@ -30,7 +34,9 @@ module.exports = {
     color: '#3B8070'
   },
   modules: [
-    '@nuxtjs/axios',
+    [ '@nuxtjs/axios', {
+      baseURL: API_ROOT
+    } ],
     'nuxt-buefy'
   ],
   /*
@@ -51,6 +57,11 @@ module.exports = {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         } )
+      }
+    },
+    postcss: {
+      plugins: {
+        'postcss-custom-properties': false
       }
     }
   }
