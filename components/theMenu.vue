@@ -16,16 +16,11 @@ export default {
   },
   methods: {
     async register() {
-      console.log('coucou')
-      // const register = await this.$axios.$post('auth/local/register', {
-      //   body: {
-      //     username: 'TEST',
-      //     email: 'user@strapi.io',
-      //     password: 'strapiPassword'
-      //   }
-      // })
-      const test = await this.$axios.$get('/test')
-      this.test = test
+      const register = await this.$axios.$post('/auth/local/register', {
+        username: 'TEST',
+        email: 'user@strapi.io',
+        password: 'strapiPassword'
+      })
     }
   }
 }
