@@ -1,7 +1,7 @@
 <template>
   <div>
     <a href="">Login</a>
-    <li @click='register'>Register</li>
+    <li @click='login'>Register</li>
     {{ test }}
   </div>
 </template>
@@ -21,6 +21,16 @@ export default {
         email: 'user@strapi.io',
         password: 'strapiPassword'
       })
+    },
+    async login() {
+      const login = await this.$axios
+        .$post('/auth/local', {
+          identifier: 'TEST',
+          password: 'strapiPassword'
+        })
+        .then(function(response) {
+          console.log(response)
+        })
     }
   }
 }
