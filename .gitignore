@@ -9,3 +9,6 @@ npm-debug.log
 
 # Nuxt generate
 dist
+
+# Ignore database config
+api/config/environments/development/database.json
