@@ -1,7 +1,7 @@
 <template>
   <section class="container">
+    <the-Menu></the-Menu>
     <div>
-      <the-Menu></the-Menu>
       <h1 class="title">
         lstnr
       </h1>
@@ -28,11 +28,8 @@ export default {
 
 <style>
 .container {
-  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  flex-direction: column;
 }
 
 .title {
