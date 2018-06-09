@@ -8,6 +8,12 @@ const store = () => {
       products_cats: {},
       cart: {
         totalprice: 0
+      },
+      user: false
+    },
+    mutations: {
+      loggin(state, user) {
+        state.user = user;
       }
     }
   } )
