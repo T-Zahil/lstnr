@@ -34,7 +34,10 @@
           </a>
         </div>
         <div class="navbar-item" v-if="!user">
-            <Login v-if="!user"></Login>
+            <Login></Login>
+        </div>
+        <div class="navbar-item" v-if="!user">
+            <Register></Register>
         </div>
         <div class="navbar-item is-hoverable" v-if="user">
             <div class="field is-grouped">
@@ -73,6 +76,7 @@
 <script>
 import { mapState } from 'vuex'
 import Login from './login.vue';
+import Register from './register.vue';
 export default {
   name: 'theMenu',
   data() {
@@ -85,19 +89,13 @@ export default {
     ...mapState(['user'])
   },
   methods: {
-    async register() {
-      const register = await this.$axios.$post('/auth/local/register', {
-        username: 'TEST',
-        email: 'user@strapi.io',
-        password: 'strapiPassword'
-      })
-    },
     toggleBurger() {
       this.$data.isBurgerActive = !this.$data.isBurgerActive;
     }
   },
   components: {
-    Login
+    Login,
+    Register
   }
 }
 </script>

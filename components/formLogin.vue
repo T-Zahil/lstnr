@@ -1,7 +1,7 @@
 <template>
     <div class="modal-card" style="width: auto">
         <header class="modal-card-head">
-            <p class="modal-card-title">Login</p>
+            <p class="modal-card-title">Sign in</p>
         </header>
         <section class="modal-card-body">
             <b-field label="Email">
@@ -37,8 +37,8 @@
     export default {
       data() {
         return {
-          email: 'user@strapi.io',
-          password: 'strapiPassword',
+          email: '',
+          password: '',
         }
       },
       methods: {
@@ -55,7 +55,7 @@
                 type: 'is-success'
               });
 
-              self.$store.commit('loggin', response.user);
+              self.$store.commit('loggin', response.user, response.jwt);
               self.$parent.close();
             })
             .catch(function (error){
