@@ -1,22 +1,22 @@
 <template>
     <section>
         <button class="button is-primary is-medium" @click="cardModal()">
-            Sign in
+            Sign up
         </button>
     </section>
 </template>
 
 <script>
-    import FormLogin from './formLogin.vue';
+    import FormRegister from './formRegister.vue';
     export default {
         components: {
-          FormLogin
+          FormRegister
         },
         methods: {
             cardModal() {
                 this.$modal.open({
                     parent: this,
-                    component: FormLogin,
+                    component: FormRegister,
                     hasModalCard: true
                 })
             }

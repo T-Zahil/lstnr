@@ -9,11 +9,13 @@ const store = () => {
       cart: {
         totalprice: 0
       },
-      user: false
+      user: false,
+      token: false,
     },
     mutations: {
-      loggin(state, user) {
+      loggin(state, user, jwt) {
         state.user = user;
+        state.token = jwt;
       }
     }
   } )
