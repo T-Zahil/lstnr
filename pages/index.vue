@@ -13,15 +13,37 @@
         <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
       </div>
     </div>
+    <section class="columns">
+      <div class="column">
+        <listener-card></listener-card>
+      </div>
+      <div class="column">
+        <listener-card></listener-card>
+      </div>
+      <div class="column">
+        <listener-card></listener-card>
+      </div>
+      <div class="column">
+        <listener-card></listener-card>
+      </div>
+      <div class="column">
+        <listener-card></listener-card>
+      </div>
+      <div class="column">
+        <listener-card></listener-card>
+      </div>
+    </section>
   </section>
 </template>
 
 <script>
 import theMenu from '~/components/theMenu.vue'
+import listenerCard from '~/components/listenerCard.vue'
 
 export default {
   components: {
-    theMenu
+    theMenu,
+    listenerCard
   }
 }
 </script>
