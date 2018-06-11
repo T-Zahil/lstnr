@@ -79,7 +79,7 @@
           .catch(function (error){
             self.$toast.open({
               duration: 2000,
-              message: `Please verify your informations`,
+              message: `Error: ${error.response.data.message}`,
               type: 'is-danger'
             });
           });

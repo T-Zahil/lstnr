@@ -23,7 +23,6 @@
                     required>
                 </b-input>
             </b-field>
-            <b-checkbox>Remember me</b-checkbox>
         </section>
         <footer class="modal-card-foot">
             <button class="button" type="button" @click="$parent.close()">Close</button>
@@ -61,7 +60,7 @@
             .catch(function (error){
               self.$toast.open({
                 duration: 2000,
-                message: `Wrong credentials`,
+                message: `Error: ${error.response.data.message}`,
                 type: 'is-danger'
               });
             })
