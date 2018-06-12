@@ -27,6 +27,7 @@ module.exports = {
       href: '/favicon.ico'
     } ]
   },
+  plugins: [{ src: '~/plugins/localStorage.js', ssr: false }],
   /*
    ** Customize the progress bar color
    */
