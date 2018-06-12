@@ -39,7 +39,6 @@
 <script>
 import theMenu from '~/components/theMenu.vue'
 import listenerCard from '~/components/listenerCard.vue'
-
 export default {
   components: {
     theMenu,
@@ -48,31 +47,17 @@ export default {
 }
 </script>
 
-<style>
-.container {
-  display: flex;
-  flex-direction: column;
+<style lang="scss">
+@font-face {
+  font-family: 'Futura';
+  src: url('../static/fonts/FuturaStd-Book.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Futura Bold';
+  src: url('../static/fonts/FuturaStd-Bold.otf') format('truetype');
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+* {
+  font-family: 'Futura';
 }
 </style>
