@@ -20,8 +20,8 @@
         </div>
       </section>
       <div class="column is-2"></div>
-      <div class="column is-4">
-        <img src="~/assets/hero.png" alt="">
+      <div class="column is-4 level">
+        <img src="~/assets/hero.png" alt="" class="level-item">
       </div>
     </div>
     <section class="columns">
@@ -116,6 +116,11 @@ export default {
         }
       }
     }
+  }
+  .level {
+    align-items: center;
+    justify-content: center;
+    display: flex;
   }
 }
 </style>
