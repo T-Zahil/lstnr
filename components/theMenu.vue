@@ -100,6 +100,7 @@ export default {
 <style lang="scss">
 .navbar {
   height: 6rem;
+  padding: 0 3rem;
   .navbar-menu {
     .navbar-start {
       .navbar-item {
