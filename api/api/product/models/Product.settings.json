@@ -1,0 +1,56 @@
+{
+  "connection": "default",
+  "collectionName": "products",
+  "info": {
+    "name": "product",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "name": {
+      "maxLength": 255,
+      "unique": true,
+      "minLength": 2,
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "maxLength": 500,
+      "minLength": 10,
+      "type": "text",
+      "required": true
+    },
+    "website": {
+      "maxLength": 1000,
+      "type": "string",
+      "required": true
+    },
+    "industry": {
+      "model": "industry",
+      "via": "products"
+    },
+    "company-name": {
+      "maxLength": 255,
+      "minLength": 2,
+      "type": "string"
+    },
+    "company-creation-date": {
+      "type": "date"
+    },
+    "logo": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "color": {
+      "default": "000000",
+      "maxLength": 6,
+      "minLength": 6,
+      "type": "string"
+    }
+  }
+}

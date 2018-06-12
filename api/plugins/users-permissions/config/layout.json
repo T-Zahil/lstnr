@@ -1,1 +1,18 @@
-{}
+{
+  "user": {
+    "attributes": {
+      "points": {
+        "appearance": ""
+      },
+      "company": {
+        "appearance": ""
+      },
+      "company-position": {
+        "appearance": ""
+      },
+      "bio": {
+        "appearance": "WYSIWYG"
+      }
+    }
+  }
+}

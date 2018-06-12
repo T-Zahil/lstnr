@@ -15,7 +15,7 @@
       </p>
     </div>
     <footer class="card-footer">
-      <a href="#" class="card-footer-item">{{ nbComments }} Comments</a>
+      <a href="#" @click="test" class="card-footer-item">{{ nbComments }} Comments</a>
     </footer>
   </div>
 </template>
@@ -50,6 +50,23 @@ export default {
       } else {
         return false;
       }
+    },
+    async test() {
+            const hello = await this.$axios.$get('/users', {
+            identifier: this.$data.email,
+            password: this.$data.password,
+            })
+            .then(function(response) {
+              console.log(response);
+            })
+            .catch(function (error){
+              console.log(error);
+              self.$toast.open({
+                duration: 2000,
+                message: `Error: ${error.response.data.message}`,
+                type: 'is-danger'
+              });
+            })
     }
   }
 }

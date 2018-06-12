@@ -1,0 +1,34 @@
+{
+  "connection": "default",
+  "collectionName": "comments",
+  "info": {
+    "name": "comment",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "idea": {
+      "model": "idea",
+      "via": "comments"
+    },
+    "author": {
+      "model": "user",
+      "via": "comments",
+      "plugin": "users-permissions"
+    },
+    "upvote": {
+      "max": 9999,
+      "type": "integer"
+    },
+    "description": {
+      "maxLength": 4000,
+      "minLength": 4,
+      "type": "text",
+      "required": true
+    }
+  }
+}
