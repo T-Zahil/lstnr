@@ -19,7 +19,7 @@
     border-radius: 4px;
     align-items: center;
     justify-content: center;
-    padding: 0px 12px;
+    padding: 0px 6px;
     border: 2px solid hsl(0, 0%, 86%);
     background-color: #fff;
     color:black;
@@ -61,7 +61,7 @@
 
   .number-vote {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: center;
   }
 

@@ -64,6 +64,9 @@
 </template>
 
 <style>
+  nav {
+    margin-bottom: 20px;
+  }
   .avatar {
     border-radius: 50%;
     border: 2px solid purple;

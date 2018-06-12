@@ -4,16 +4,14 @@
       <p class="card-header-title">
         {{ title }}
       </p>
-      <a href="#" class="card-header-icon" aria-label="more options">
-        <span class="icon">
-          <i class="fas fa-angle-down" aria-hidden="true"></i>
-        </span>
-      </a>
     </header>
     <div class="card-content">
       <upvote :votes="votes"></upvote>
-      <p class="content">
-        {{ content }}
+      <p class="content" v-if="isTooLong(content)">
+          {{ content.substring(0, 300) + '...'}}
+      </p>
+      <p class="content" v-else>
+          {{ content }}
       </p>
     </div>
     <footer class="card-footer">
@@ -24,7 +22,7 @@
 
 <style>
   .card-idea {
-    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .card-idea .card-content {
@@ -44,6 +42,15 @@ export default {
   props: ['title', 'content', 'votes', 'nbComments'],
   components: {
     upvote
+  },
+  methods: {
+    isTooLong(content) {
+      if(content.length >= 300) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 }
 </script>
