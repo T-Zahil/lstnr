@@ -47,7 +47,7 @@ export default {
 <style lang="scss">
 .card {
   border-radius: 8px;
-  box-shadow: 0;
+  box-shadow: none;
   .card-image {
     display: flex;
     justify-content: center;
