@@ -46,7 +46,27 @@ export default {
     theMenu,
     idea,
     listenerProfileCard
-  }
+  },
+  data() {
+    return {
+      product: {},
+      logo: {},
+      industry: {},
+    }
+  },
+  async beforeMount() {
+    var self = this;
+
+    const product = await this.$axios.$get(`/product/${this.$route.params.lstnrprofile}`)
+    .then(function(response) {
+      self.product = response;
+      self.industry = response.industry;
+      self.logo = response.logo;
+    })
+    .catch(function (error){
+      console.log(error);
+    })
+  },
 }
 </script>
 

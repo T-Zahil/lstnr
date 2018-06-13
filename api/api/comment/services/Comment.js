@@ -9,9 +9,6 @@
 // Public dependencies.
 const _ = require('lodash');
 
-// Strapi utilities.
-const utils = require('strapi-bookshelf/lib/utils/');
-
 module.exports = {
 
   /**
@@ -21,33 +18,21 @@ module.exports = {
    */
 
   fetchAll: (params) => {
-    // Convert `params` object to filters compatible with Bookshelf.
+    // Convert `params` object to filters compatible with Mongo.
     const filters = strapi.utils.models.convertParams('comment', params);
     // Select field to populate.
     const populate = Comment.associations
       .filter(ast => ast.autoPopulate !== false)
-      .map(ast => ast.alias);
+      .map(ast => ast.alias)
+      .join(' ');
 
-    return Comment.query(function(qb) {
-      _.forEach(filters.where, (where, key) => {
-        if (_.isArray(where.value)) {
-          for (const value in where.value) {
-            qb[value ? 'where' : 'orWhere'](key, where.symbol, where.value[value])
-          }
-        } else {
-          qb.where(key, where.symbol, where.value);
-        }
-      });
-
-      if (filters.sort) {
-        qb.orderBy(filters.sort.key, filters.sort.order);
-      }
-
-      qb.offset(filters.start);
-      qb.limit(filters.limit);
-    }).fetchAll({
-      withRelated: populate
-    });
+    return Comment
+      .find()
+      .where(filters.where)
+      .sort(filters.sort)
+      .skip(filters.start)
+      .limit(filters.limit)
+      .populate(populate);
   },
 
   /**
@@ -60,11 +45,12 @@ module.exports = {
     // Select field to populate.
     const populate = Comment.associations
       .filter(ast => ast.autoPopulate !== false)
-      .map(ast => ast.alias);
+      .map(ast => ast.alias)
+      .join(' ');
 
-    return Comment.forge(_.pick(params, 'id')).fetch({
-      withRelated: populate
-    });
+    return Comment
+      .findOne(_.pick(params, _.keys(Comment.schema.paths)))
+      .populate(populate);
   },
 
   /**
@@ -79,10 +65,10 @@ module.exports = {
     const data = _.omit(values, Comment.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Comment.forge(data).save();
+    const entry = await Comment.create(data);
 
     // Create relational data and return the entry.
-    return Comment.updateRelations({ id: entry.id , values: relations });
+    return Comment.updateRelations({ id: entry.id, values: relations });
   },
 
   /**
@@ -93,13 +79,13 @@ module.exports = {
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Comment.associations.map(ast => ast.alias));
-    const data = _.omit(values, Comment.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Comment.associations.map(a => a.alias));
+    const data = _.omit(values, Comment.associations.map(a => a.alias));
 
-    // Create entry with no-relational data.
-    const entry = Comment.forge(params).save(data, { path: true });
+    // Update entry with no-relational data.
+    const entry = await Comment.update(params, data, { multi: true });
 
-    // Create relational data and return the entry.
+    // Update relational data and return the entry.
     return Comment.updateRelations(Object.assign(params, { values: relations }));
   },
 
@@ -109,13 +95,37 @@ module.exports = {
    * @return {Promise}
    */
 
-  remove: async (params) => {
+  remove: async params => {
+    // Select field to populate.
+    const populate = Comment.associations
+      .filter(ast => ast.autoPopulate !== false)
+      .map(ast => ast.alias)
+      .join(' ');
+
+    // Note: To get the full response of Mongo, use the `remove()` method
+    // or add spent the parameter `{ passRawResult: true }` as second argument.
+    const data = await Comment
+      .findOneAndRemove(params, {})
+      .populate(populate);
+
+    if (!data) {
+      return data;
+    }
+
     await Promise.all(
-      Comment.associations.map(association =>
-        Comment.forge(params)[association.alias]().detach()
-      )
+      Comment.associations.map(async association => {
+        const search = _.endsWith(association.nature, 'One') || association.nature === 'oneToMany' ? { [association.via]: data._id } : { [association.via]: { $in: [data._id] } };
+        const update = _.endsWith(association.nature, 'One') || association.nature === 'oneToMany' ? { [association.via]: null } : { $pull: { [association.via]: data._id } };
+
+        // Retrieve model.
+        const model = association.plugin ?
+          strapi.plugins[association.plugin].models[association.model || association.collection] :
+          strapi.models[association.model || association.collection];
+
+        return model.update(search, update, { multi: true });
+      })
     );
 
-    return Comment.forge(params).destroy();
+    return data;
   }
 };

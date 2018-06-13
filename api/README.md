@@ -1,3 +1,3 @@
-# api
+# sample-strapi-app
 
-A quick description of api.
+A quick description of sample-strapi-app.

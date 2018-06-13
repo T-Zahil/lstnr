@@ -54,7 +54,7 @@
                 type: 'is-success'
               });
 
-              self.$store.commit('loggin', response.user, response.jwt);
+              self.$store.commit('loggin', { user: response.user, jwt: response.jwt });
               self.$parent.close();
             })
             .catch(function (error){
