@@ -1,103 +1,110 @@
 <template>
   <div class="card card--small-lstnr">
-  <header class="card-header" style="background-color: #6441A4">
-    <b-icon
-      icon="earth"
-      type="is-white"
-      size="is-24x24">
-    </b-icon>
-    <b-icon
-      icon="plus"
-      type="is-white"
-      size="is-24x24">
-    </b-icon>
-  </header>
     <div class="card-image" style="background-color: #6441A4">
       <figure class="image is-96x96">
-        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+        <img src="~/assets/twitch.jpg" alt="">
       </figure>
+      <h3>Twitch</h3>
+      <div class="tag__cat">
+        <div class="cat">
+          Gaming
+        </div>
+      </div>
     </div>
     <div class="card-content">
-      <h3 class="card-title">Twitch</h3>
-      <b-taglist>
-        <b-tag type="is-primary">Gaming</b-tag>
-        <b-tag type="is-primary">Vocal</b-tag>
-      </b-taglist>
+      <p>
+        Twitch is the number one online streaming platform focused on video games and real-life shows.
+      </p>
     </div>
     <footer class="card-footer">
       <span class="card-footer-item">
-        <b-icon
-          icon="account-multiple"
-          size="is-small">
+        <b-icon icon="account-multiple" size="is-small">
         </b-icon>
         12 034
       </span>
       <span class="card-footer-item">
-        124
-        <b-icon
-          icon="lightbulb"
-          size="is-small">
+        <b-icon icon="lightbulb" size="is-small">
         </b-icon>
+        124
       </span>
     </footer>
   </div>
 </template>
 
-<style>
-  .card--small-lstnr {
-    border-radius: 4px;
-  }
-
-  .card--small-lstnr .card-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
-  }
-
-  .card--small-lstnr .card-image {
+<style lang="scss">
+.card {
+  border-radius: 8px;
+  box-shadow: 0;
+  .card-image {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 110px;
-    padding-bottom:36px;
+    flex-direction: column;
+    padding: 1rem 0;
+    border-radius: 8px 8px 0 0;
+    figure {
+      width: 40%;
+      height: auto;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.1);
+      img {
+        border-radius: 8px;
+      }
+    }
+    h3 {
+      text-align: center;
+      font-family: 'Futura Bold';
+      color: #fff;
+    }
+    .tag__cat {
+      display: flex;
+      justify-content: center;
+      font-family: 'Futura Bold';
+      .cat {
+        width: 100%;
+        height: 1rem;
+        line-height: 0.15rem;
+        font-family: 'Futura Bold';
+        color: #7289da;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 0.6rem;
+        margin-top: 0.6rem;
+        padding: 0.75rem;
+        background-color: white;
+        border-radius: 23px;
+      }
+    }
   }
-
-  .card--small-lstnr img {
-    border-radius: 4px;
-  }
-
-  .card--small-lstnr .card-title {
-    font-size: 1.4rem;
-    font-weight: bold;
-  }
-
-  .card--small-lstnr .tags {
-    margin-top: 10px;
-  }
-
-  .card--small-lstnr .card-footer {
+  .card-content {
+    padding: 1rem;
     border: none;
+    p {
+      color: #a8a8a8;
+      font-size: 0.8rem;
+    }
   }
-
-  .card--small-lstnr .card-footer .card-footer-item {
-    border:none;
-    padding: 12px;
-    justify-content: flex-start;
+  .card-footer {
+    border: none;
+    span {
+      color: #979595;
+      border: none;
+      font-size: 0.8rem;
+      &:first-child {
+        justify-content: flex-start;
+        .icon {
+          margin-right: 0.3rem;
+        }
+      }
+      &:last-child {
+        justify-content: flex-end;
+        .icon {
+          margin-left: 0.3rem;
+        }
+      }
+    }
   }
-
-  .card--small-lstnr .card-footer .card-footer-item:last-child {
-    justify-content: flex-end;
-  }
-
-  .card--small-lstnr .card-footer .card-footer-item .icon {
-    padding-right: 6px;
-  }
-
-    .card--small-lstnr .card-footer .card-footer-item:last-child .icon {
-    padding-left: 6px;
-  }
-
+}
 </style>
+
 

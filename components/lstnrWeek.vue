@@ -140,7 +140,7 @@ export default {
         text-align: center;
         img {
           width: 40%;
-          border-radius: 23px;
+          border-radius: 8px;
           box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.1);
         }
       }

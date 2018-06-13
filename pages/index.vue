@@ -29,6 +29,7 @@
         <div class="columns">
           <div class="column is-9">
             <lstnr-Week></lstnr-Week>
+            <lstnr-Popular></lstnr-Popular>
           </div>
           <div class="colum is-3">
 
@@ -63,11 +64,13 @@
 import theMenu from '~/components/theMenu.vue'
 import listenerCard from '~/components/listenerCard.vue'
 import lstnrWeek from '~/components/lstnrWeek.vue'
+import lstnrPopular from '~/components/lstnrPopular.vue'
 export default {
   components: {
     theMenu,
     listenerCard,
-    lstnrWeek
+    lstnrWeek,
+    lstnrPopular
   }
 }
 </script>
