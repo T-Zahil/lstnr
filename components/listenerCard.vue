@@ -2,34 +2,47 @@
   <div class="card card--small-lstnr">
     <div class="card-image" style="background-color: #6441A4">
       <figure class="image is-96x96">
-        <img src="~/assets/twitch.jpg" alt="">
+        <img :src="image" alt="">
       </figure>
-      <h3>Twitch</h3>
+      <h3>{{ name }}</h3>
       <div class="tag__cat">
         <div class="cat">
-          Gaming
+          {{ cat }}
         </div>
       </div>
     </div>
     <div class="card-content">
       <p>
-        Twitch is the number one online streaming platform focused on video games and real-life shows.
+        {{ desc }}
       </p>
     </div>
     <footer class="card-footer">
       <span class="card-footer-item">
         <b-icon icon="account-multiple" size="is-small">
         </b-icon>
-        12 034
+        {{ views }}
       </span>
       <span class="card-footer-item">
         <b-icon icon="lightbulb" size="is-small">
         </b-icon>
-        124
+        {{ ideas }}
       </span>
     </footer>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'Card',
+  props: ['name', 'cat', 'desc', 'views', 'ideas'],
+  data() {
+    return {
+      image: require('~/static/' + this.name + '.jpg')
+    }
+  }
+}
+</script>
+
 
 <style lang="scss">
 .card {
@@ -79,6 +92,7 @@
   .card-content {
     padding: 1rem;
     border: none;
+    min-height: 8rem;
     p {
       color: #a8a8a8;
       font-size: 0.8rem;

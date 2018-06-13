@@ -35,26 +35,6 @@
 
           </div>
         </div>
-        <section class="columns">
-          <div class="column">
-            <listener-card></listener-card>
-          </div>
-          <div class="column">
-            <listener-card></listener-card>
-          </div>
-          <div class="column">
-            <listener-card></listener-card>
-          </div>
-          <div class="column">
-            <listener-card></listener-card>
-          </div>
-          <div class="column">
-            <listener-card></listener-card>
-          </div>
-          <div class="column">
-            <listener-card></listener-card>
-          </div>
-        </section>
       </div>
     </div>
   </section>

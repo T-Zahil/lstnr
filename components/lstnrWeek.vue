@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="left__img">
-          <img src="~/assets/discord.jpg" alt="">
+          <img src="~/static/discord.jpg" alt="">
         </div>
         <div class="left__name">Discord</div>
         <div class="left__cat">
