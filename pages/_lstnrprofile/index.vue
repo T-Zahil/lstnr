@@ -1,60 +1,110 @@
 <template>
-  <section class="container">
-    <the-Menu></the-Menu>
-    <div class="columns">
-      <div class="column is-two-thirds">
-        <idea-card-collapsed title="hello" votes="9536" content="hello you !" nbComments="825"></idea-card-collapsed>
-        <idea-card-collapsed title="hello 2" votes="2" content="hello you !" nbComments="825"></idea-card-collapsed>
-        <idea-card-collapsed title="hello 3" votes="150" content="hello you !" nbComments="825"></idea-card-collapsed>
-        <idea-card-collapsed title="hello 4" votes="56" content="hello you !" nbComments="825"></idea-card-collapsed>
+  <div class="wrapper">
+    <section class="container profile">
+      <the-Menu></the-Menu>
+      <div class="columns">
+        <div class="column is-two-thirds ideas">
+          <div class="ideas__header columns">
+            <div class="column is-2"></div>
+            <div class="column is-6">
+              <button class="button">give feedback</button>
+            </div>
+            <div class="colum is-4 sorting">
+              <span>tags: </span>
+              <ul>
+                <li>all</li>
+                <li>popular</li>
+                <li>newest</li>
+              </ul>
+            </div>
+          </div>
+          <idea title="Disable explicit image filtering for bot accounts" content="As the owner of one of the biggest nsfw bots the explicit image filtering of all bots accs breaks my opt-on commands, explicit image filtering for bots should use the users and bot owners filter settings and not be on by default for all bots" votes="810" nbComments="2">
+          </idea>
+          <idea title="Disable explicit image filtering for bot accounts" content="As the owner of one of the biggest nsfw bots the explicit image filtering of all bots accs breaks my opt-on commands, explicit image filtering for bots should use the users and bot owners filter settings and not be on by default for all bots" votes="810" nbComments="2">
+          </idea>
+          <idea title="Disable explicit image filtering for bot accounts" content="As the owner of one of the biggest nsfw bots the explicit image filtering of all bots accs breaks my opt-on commands, explicit image filtering for bots should use the users and bot owners filter settings and not be on by default for all bots" votes="810" nbComments="2">
+          </idea>
+          <idea title="Disable explicit image filtering for bot accounts" content="As the owner of one of the biggest nsfw bots the explicit image filtering of all bots accs breaks my opt-on commands, explicit image filtering for bots should use the users and bot owners filter settings and not be on by default for all bots" votes="810" nbComments="2">
+          </idea>
+        </div>
+        <div class="column">
+          <listener-profile-card></listener-profile-card>
+        </div>
       </div>
-      <div class="column">
-        <listener-profile-card></listener-profile-card>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>
 import theMenu from '~/components/theMenu.vue'
-import ideaCardCollapsed from '~/components/ideaCardCollapsed.vue'
+import idea from '~/components/idea.vue'
 import listenerProfileCard from '~/components/listenerProfileCard.vue'
 
 export default {
   name: 'profile',
   components: {
     theMenu,
-    ideaCardCollapsed,
+    idea,
     listenerProfileCard
   }
 }
 </script>
 
-<style>
-.container {
-  display: flex;
-  flex-direction: column;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+<style lang="scss">
+.wrapper {
+  background-color: #fbfbfb;
+  .profile {
+    padding-top: 10rem;
+    .ideas {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 2rem 4rem;
+      .ideas__header {
+        .button {
+          background: #732ffb;
+          border-radius: 40px;
+          font-family: 'Futura Bold';
+          font-size: 0.7rem;
+          padding: 1rem 2rem;
+          text-transform: uppercase;
+          line-height: 0.1rem;
+          color: #ffffff;
+        }
+      }
+      .sorting {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        span {
+          font-family: 'Futura Bold';
+          font-size: 0.6rem;
+          color: #1f1f1f;
+          text-transform: uppercase;
+          margin-right: 0.5rem;
+        }
+        ul {
+          display: flex;
+          li {
+            padding: 0.3rem 0.7rem;
+            border-radius: 2px;
+            font-family: 'Futura Bold';
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            &:first-child {
+              background: #732ffb;
+              margin-right: 1rem;
+              color: #ffffff;
+            }
+            &:last-child {
+              border-left: 1px solid #e0e0e0;
+              color: #e0e0e0;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 </style>
+

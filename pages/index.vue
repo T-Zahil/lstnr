@@ -61,19 +61,6 @@ export default {
 </script>
 
 <style lang="scss">
-@font-face {
-  font-family: 'Futura';
-  src: url('../static/fonts/FuturaStd-Book.otf') format('truetype');
-}
-@font-face {
-  font-family: 'Futura Bold';
-  src: url('../static/fonts/FuturaStd-Bold.otf') format('truetype');
-}
-
-* {
-  font-family: 'Futura';
-}
-
 .header {
   padding: 7rem 0;
   margin-top: 6rem;

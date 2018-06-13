@@ -59,6 +59,7 @@
 
 .number-vote {
   font-family: 'Futura Bold';
+  font-weight: bold;
   font-size: 1rem;
   text-align: center;
 }
