@@ -62,6 +62,9 @@
               <a class="navbar-item" href="#">
                 Settings
               </a>
+              <a class="navbar-item"  @click="logout" >
+                Logout
+              </a>
             </div>
           </div>
         </div>
@@ -87,7 +90,10 @@ export default {
   },
   methods: {
     toggleBurger() {
-      this.$data.isBurgerActive = !this.$data.isBurgerActive
+      this.$data.isBurgerActive = !this.$data.isBurgerActive;
+    },
+    logout() {
+      this.$store.commit('logout');
     }
   },
   components: {

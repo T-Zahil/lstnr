@@ -13,9 +13,13 @@ const store = () => {
       token: false,
     },
     mutations: {
-      loggin(state, user, jwt) {
-        state.user = user;
-        state.token = jwt;
+      loggin(state, payload) {
+        state.user = payload.user;
+        state.token = payload.jwt;
+      },
+      logout(state) {
+        state.user = false;
+        state.token = false;
       }
     }
   } )

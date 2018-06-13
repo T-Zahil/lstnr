@@ -37,11 +37,18 @@
 
 <script>
 import upvote from '~/components/upvote.vue'
+import { mapState } from 'vuex'
+import VueMarkdown from 'vue-markdown'
+import removeMarkdown from 'remove-markdown'
 
 export default {
   props: ['title', 'content', 'votes', 'nbComments'],
   components: {
-    upvote
+    upvote,
+    VueMarkdown
+  },
+  computed: {
+    ...mapState(['token'])
   },
   methods: {
     isTooLong(content) {
@@ -52,20 +59,17 @@ export default {
       }
     },
     async test() {
-            const hello = await this.$axios.$get('/users', {
-            identifier: this.$data.email,
-            password: this.$data.password,
+            var self = this;
+            const hello = await this.$axios.$get('/idea', {
+                headers: {
+                  'Authorization': `Bearer ${self.token}`
+                },
             })
             .then(function(response) {
-              console.log(response);
+              self.content = removeMarkdown(response[0].description);
             })
             .catch(function (error){
-              console.log(error);
-              self.$toast.open({
-                duration: 2000,
-                message: `Error: ${error.response.data.message}`,
-                type: 'is-danger'
-              });
+              console.log(error.response);
             })
     }
   }
