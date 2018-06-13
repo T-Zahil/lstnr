@@ -31,6 +31,24 @@
                     required>
                 </b-input>
             </b-field>
+            <b-field label="Company">
+                <b-input
+                    type="text"
+                    :value="company"
+                    v-model="company"
+                    placeholder="Your company"
+                    required>
+                </b-input>
+            </b-field>
+            <b-field label="Company Position">
+                <b-input
+                    type="text"
+                    :value="companyPosition"
+                    v-model="companyPosition"
+                    placeholder="Your position"
+                    required>
+                </b-input>
+            </b-field>
             <b-field label="Password">
                 <b-input
                     type="password"
@@ -57,6 +75,8 @@
           lastname: '',
           email: '',
           password: '',
+          companyPosition: '',
+          company: '',
         }
       },
       methods: {
@@ -65,7 +85,9 @@
           const register = await this.$axios.$post('/auth/local/register', {
             username: this.$data.firstname + ' ' + this.$data.lastname,
             email: this.$data.email,
-            password: this.$data.password
+            password: this.$data.password,
+            'company-position': this.$data.companyPosition,
+            company: this.$data.company
           })
           .then(function(response) {
             self.$toast.open({
@@ -73,7 +95,7 @@
               message: `Welcome ${response.user.username} !`,
               type: 'is-success'
             });
-            self.$store.commit('loggin', response.user, response.jwt);
+            self.$store.commit('loggin', { user: response.user, jwt: response.jwt});
             self.$parent.close();
           })
           .catch(function (error){

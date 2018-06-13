@@ -62,8 +62,7 @@
     },
     "bio": {
       "maxLength": 500,
-      "type": "text",
-      "required": true
+      "type": "text"
     },
     "comments": {
       "collection": "comment",

@@ -6,7 +6,7 @@
           <div class="ideas__header columns">
             <div class="column is-2"></div>
             <div class="column is-6">
-              <button class="button">give feedback</button>
+              <button @click="feedbackModal" class="button">give feedback</button>
             </div>
             <div class="colum is-4 sorting">
               <span>tags: </span>
@@ -31,6 +31,7 @@
 <script>
 import idea from '~/components/idea.vue'
 import listenerProfileCard from '~/components/listenerProfileCard.vue'
+import formIdea from '~/components/formIdea.vue'
 
 export default {
   name: 'profile',
@@ -58,6 +59,15 @@ export default {
       .catch(function(error) {
         console.log(error)
       })
+  },
+  methods: {
+    feedbackModal() {
+            this.$modal.open({
+                parent: this,
+                component: formIdea,
+                hasModalCard: true
+            })
+    }
   }
 }
 </script>
