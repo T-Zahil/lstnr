@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar is-white" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-white is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://bulma.io">
         <img src="~/assets/logo.png">
@@ -100,7 +100,7 @@ export default {
 <style lang="scss">
 .navbar {
   height: 6rem;
-  padding: 0 3rem;
+  padding: 0 4rem;
   .navbar-menu {
     .navbar-start {
       .navbar-item {
