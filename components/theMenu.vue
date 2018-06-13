@@ -38,14 +38,14 @@
             FAQ
           </a>
         </div>
+      </div>
+      <div class="navbar-end">
         <div class="navbar-item" v-if="!user">
           <Login></Login>
         </div>
         <div class="navbar-item" v-if="!user">
           <Register></Register>
         </div>
-      </div>
-      <div class="navbar-end">
         <div class="navbar-item is-hoverable" v-if="user">
           <div class="field is-grouped">
             <figure class="image is-24x24">
@@ -62,7 +62,7 @@
               <a class="navbar-item" href="#">
                 Settings
               </a>
-              <a class="navbar-item"  @click="logout" >
+              <a class="navbar-item" @click="logout">
                 Logout
               </a>
             </div>
@@ -90,10 +90,10 @@ export default {
   },
   methods: {
     toggleBurger() {
-      this.$data.isBurgerActive = !this.$data.isBurgerActive;
+      this.$data.isBurgerActive = !this.$data.isBurgerActive
     },
     logout() {
-      this.$store.commit('logout');
+      this.$store.commit('logout')
     }
   },
   components: {
