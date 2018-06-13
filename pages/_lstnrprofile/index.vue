@@ -27,7 +27,7 @@
           <idea title="Disable explicit image filtering for bot accounts" content="As the owner of one of the biggest nsfw bots the explicit image filtering of all bots accs breaks my opt-on commands, explicit image filtering for bots should use the users and bot owners filter settings and not be on by default for all bots" votes="810" nbComments="2">
           </idea>
         </div>
-        <div class="column">
+        <div class="column side">
           <listener-profile-card></listener-profile-card>
         </div>
       </div>
@@ -103,6 +103,9 @@ export default {
           }
         }
       }
+    }
+    .side {
+      padding-top: 0;
     }
   }
 }

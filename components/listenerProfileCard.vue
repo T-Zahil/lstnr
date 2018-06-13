@@ -1,8 +1,8 @@
 <template>
-  <div class="card card-lstnr-prorfile">
-    <div class="card-image" style="background-color: #6441A4">
+  <div class="card card-lstnr-profile">
+    <div class="card-image" style="background-color: #738BD7">
       <figure class="image is-96x96">
-        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+        <img src="~/static/discord.jpg" alt="">
       </figure>
       <div class="card-image-title">
         Discord
@@ -10,70 +10,110 @@
       <b-tag rounded style="color: #6441A4" type="is-white">Gaming</b-tag>
     </div>
     <div class="card-content">
+      <div class="level">
+        <div class="level-item">
+          <p>821</p>
+          <span>lstnrs</span>
+        </div>
+        <div class="level-item">
+          <p>78</p>
+          <span>feedbacks</span>
+        </div>
+      </div>
       <p class="content">
         All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone. Stop paying for TeamSpeak servers and hassling with Skype. Simplify your life.
       </p>
       <div class="additionnal-info">
-        <div class="additionnal-item">Website <a href="#"><span style="color: #6441A4; font-weight: bold; padding-left:20px;">discordapp.com</span></a></div>
+        <div class="additionnal-item">
+          <a href="#">
+            <span>discordapp.com</span>
+          </a>
+        </div>
       </div>
     </div>
     <footer class="card-footer">
-      <a href="#" class="card-footer-item">Follow</a>
+      <button class="card-footer-item button">Following</button>
     </footer>
   </div>
 </template>
 
-<style>
-  .card-lstnr-prorfile {
-    border-radius: 4px;
-  }
-
-  .card-lstnr-prorfile .card-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
-  }
-
-  .card-lstnr-prorfile .card-image {
+<style lang="scss">
+.card-lstnr-profile {
+  border-radius: 4px;
+  .card-image {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     height: 250px;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
+    figure {
+      box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.1);
+      img {
+        border-radius: 10px;
+      }
+    }
+    .card-image-title {
+      font-family: 'Futura Bold';
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin: 1rem 0;
+    }
+    span {
+      color: #738bd7;
+      text-transform: uppercase;
+      font-family: 'Futura Bold';
+      padding: 0 1rem;
+    }
   }
-
-  .card-lstnr-prorfile .image {
-    margin-top: 30px;
+  .card-content {
+    .level {
+      .level-item {
+        display: flex;
+        flex-direction: column;
+        p {
+          font-family: 'Futura Bold';
+          font-size: 1.4rem;
+          color: #7289da;
+        }
+        span {
+          font-family: 'Futura Bold';
+          font-size: 0.8rem;
+          color: #e0e0e0;
+        }
+      }
+    }
+    .content {
+      font-size: 0.9rem;
+    }
+    .additionnal-item {
+      a {
+        span {
+          font-family: 'Futura Bold';
+          font-size: 0.8rem;
+          color: #738bd7;
+        }
+      }
+    }
   }
-
-  .card-lstnr-prorfile .card-image-title {
-    color: white;
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin-top: 30px;
+  .card-footer {
+    width: 100%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    .card-footer-item {
+      width: 90%;
+      height: 2.5rem;
+      background: #7289da;
+      border-radius: 40px;
+      font-family: 'Futura Bold';
+      font-size: 0.9rem;
+      color: #ffffff;
+      flex-grow: 0;
+      line-height: 0.5rem;
+      margin-bottom: 1rem;
+    }
   }
-
-  .card-lstnr-prorfile img {
-    border-radius: 4px;
-  }
-
-  .card-lstnr-prorfile .card-title {
-    font-size: 1.4rem;
-    font-weight: bold;
-  }
-
-  .card-lstnr-prorfile .tag {
-    margin-top: 14px;
-    font-weight: bold;
-  }
-
-  .card-lstnr-prorfile .additionnal-item {
-    color: lightgray;
-    font-weight: bold;
-  }
-
+}
 </style>
-
