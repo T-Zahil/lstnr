@@ -1,0 +1,40 @@
+{
+  "connection": "default",
+  "collectionName": "ideas",
+  "info": {
+    "name": "idea",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "maxLength": 255,
+      "minLength": 10,
+      "type": "string",
+      "required": true
+    },
+    "upvote": {
+      "max": 9999,
+      "type": "integer"
+    },
+    "author": {
+      "model": "user",
+      "via": "ideas",
+      "plugin": "users-permissions"
+    },
+    "comments": {
+      "collection": "comment",
+      "via": "idea"
+    },
+    "description": {
+      "maxLength": 4000,
+      "minLength": 10,
+      "type": "text",
+      "required": true
+    }
+  }
+}

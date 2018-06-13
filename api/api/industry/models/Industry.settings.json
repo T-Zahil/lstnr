@@ -1,8 +1,8 @@
 {
   "connection": "default",
-  "collectionName": "tests",
+  "collectionName": "industries",
   "info": {
-    "name": "test",
+    "name": "industry",
     "description": ""
   },
   "options": {
@@ -13,6 +13,10 @@
   "attributes": {
     "name": {
       "type": "string"
+    },
+    "products": {
+      "collection": "product",
+      "via": "industry"
     }
   }
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Test.js service
+ * Idea.js service
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
@@ -15,20 +15,20 @@ const utils = require('strapi-bookshelf/lib/utils/');
 module.exports = {
 
   /**
-   * Promise to fetch all tests.
+   * Promise to fetch all ideas.
    *
    * @return {Promise}
    */
 
   fetchAll: (params) => {
     // Convert `params` object to filters compatible with Bookshelf.
-    const filters = strapi.utils.models.convertParams('test', params);
+    const filters = strapi.utils.models.convertParams('idea', params);
     // Select field to populate.
-    const populate = Test.associations
+    const populate = Idea.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    return Test.query(function(qb) {
+    return Idea.query(function(qb) {
       _.forEach(filters.where, (where, key) => {
         if (_.isArray(where.value)) {
           for (const value in where.value) {
@@ -51,71 +51,71 @@ module.exports = {
   },
 
   /**
-   * Promise to fetch a/an test.
+   * Promise to fetch a/an idea.
    *
    * @return {Promise}
    */
 
   fetch: (params) => {
     // Select field to populate.
-    const populate = Test.associations
+    const populate = Idea.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
 
-    return Test.forge(_.pick(params, 'id')).fetch({
+    return Idea.forge(_.pick(params, 'id')).fetch({
       withRelated: populate
     });
   },
 
   /**
-   * Promise to add a/an test.
+   * Promise to add a/an idea.
    *
    * @return {Promise}
    */
 
   add: async (values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Test.associations.map(ast => ast.alias));
-    const data = _.omit(values, Test.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Idea.associations.map(ast => ast.alias));
+    const data = _.omit(values, Idea.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Test.forge(data).save();
+    const entry = await Idea.forge(data).save();
 
     // Create relational data and return the entry.
-    return Test.updateRelations({ id: entry.id , values: relations });
+    return Idea.updateRelations({ id: entry.id , values: relations });
   },
 
   /**
-   * Promise to edit a/an test.
+   * Promise to edit a/an idea.
    *
    * @return {Promise}
    */
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Test.associations.map(ast => ast.alias));
-    const data = _.omit(values, Test.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Idea.associations.map(ast => ast.alias));
+    const data = _.omit(values, Idea.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = Test.forge(params).save(data, { path: true });
+    const entry = Idea.forge(params).save(data, { path: true });
 
     // Create relational data and return the entry.
-    return Test.updateRelations(Object.assign(params, { values: relations }));
+    return Idea.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
-   * Promise to remove a/an test.
+   * Promise to remove a/an idea.
    *
    * @return {Promise}
    */
 
   remove: async (params) => {
     await Promise.all(
-      Test.associations.map(association =>
-        Test.forge(params)[association.alias]().detach()
+      Idea.associations.map(association =>
+        Idea.forge(params)[association.alias]().detach()
       )
     );
 
-    return Test.forge(params).destroy();
+    return Idea.forge(params).destroy();
   }
 };

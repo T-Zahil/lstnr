@@ -2,64 +2,64 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/test",
-      "handler": "Test.find",
+      "path": "/industry",
+      "handler": "Industry.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/test/:id",
-      "handler": "Test.findOne",
+      "path": "/industry/:id",
+      "handler": "Industry.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/test",
-      "handler": "Test.create",
+      "path": "/industry",
+      "handler": "Industry.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/test/:id",
-      "handler": "Test.update",
+      "path": "/industry/:id",
+      "handler": "Industry.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/test/:id",
-      "handler": "Test.destroy",
+      "path": "/industry/:id",
+      "handler": "Industry.destroy",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/test/:id/relationships/:relation",
-      "handler": "Test.createRelation",
+      "path": "/industry/:id/relationships/:relation",
+      "handler": "Industry.createRelation",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/test/:id/relationships/:relation",
-      "handler": "Test.updateRelation",
+      "path": "/industry/:id/relationships/:relation",
+      "handler": "Industry.updateRelation",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/test/:id/relationships/:relation",
-      "handler": "Test.destroyRelation",
+      "path": "/industry/:id/relationships/:relation",
+      "handler": "Industry.destroyRelation",
       "config": {
         "policies": []
       }

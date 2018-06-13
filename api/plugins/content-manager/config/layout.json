@@ -49,7 +49,7 @@
         "appearance": ""
       },
       "description": {
-        "appearance": ""
+        "appearance": "WYSIWYG"
       },
       "slug": {
         "appearance": ""
@@ -61,6 +61,18 @@
         "appearance": ""
       },
       "img3": {
+        "appearance": ""
+      },
+      "website": {
+        "appearance": ""
+      },
+      "company-name": {
+        "appearance": ""
+      },
+      "company-creation-date": {
+        "appearance": ""
+      },
+      "color": {
         "appearance": ""
       }
     }
@@ -107,6 +119,36 @@
     }
   },
   "test": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
+  },
+  "idea": {
+    "attributes": {
+      "title": {
+        "appearance": ""
+      },
+      "upvote": {
+        "appearance": ""
+      },
+      "description": {
+        "appearance": "WYSIWYG"
+      }
+    }
+  },
+  "comment": {
+    "attributes": {
+      "upvote": {
+        "appearance": ""
+      },
+      "description": {
+        "appearance": "WYSIWYG"
+      }
+    }
+  },
+  "industry": {
     "attributes": {
       "name": {
         "appearance": ""

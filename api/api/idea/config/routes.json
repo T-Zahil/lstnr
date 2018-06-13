@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/idea",
+      "handler": "Idea.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/idea/:id",
+      "handler": "Idea.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/idea",
+      "handler": "Idea.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/idea/:id",
+      "handler": "Idea.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/idea/:id",
+      "handler": "Idea.destroy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/idea/:id/relationships/:relation",
+      "handler": "Idea.createRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/idea/:id/relationships/:relation",
+      "handler": "Idea.updateRelation",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/idea/:id/relationships/:relation",
+      "handler": "Idea.destroyRelation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
