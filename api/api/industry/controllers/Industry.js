@@ -25,6 +25,10 @@ module.exports = {
    */
 
   findOne: async (ctx) => {
+    if (!ctx.params._id.match(/^[0-9a-fA-F]{24}$/)) {
+      return ctx.notFound();
+    }
+
     return strapi.services.industry.fetch(ctx.params);
   },
 
@@ -56,35 +60,5 @@ module.exports = {
 
   destroy: async (ctx, next) => {
     return strapi.services.industry.remove(ctx.params);
-  },
-
-  /**
-   * Add relation to a/an industry record.
-   *
-   * @return {Object}
-   */
-
-  createRelation: async (ctx, next) => {
-    return strapi.services.industry.addRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Update relation to a/an industry record.
-   *
-   * @return {Object}
-   */
-
-  updateRelation: async (ctx, next) => {
-    return strapi.services.industry.editRelation(ctx.params, ctx.request.body);
-  },
-
-  /**
-   * Destroy relation to a/an industry record.
-   *
-   * @return {Object}
-   */
-
-  destroyRelation: async (ctx, next) => {
-    return strapi.services.industry.removeRelation(ctx.params, ctx.request.body);
   }
 };

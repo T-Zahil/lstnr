@@ -3,13 +3,10 @@
     <the-Menu></the-Menu>
     <div class="columns">
       <div class="column is-two-thirds">
-        <idea-card-collapsed title="hello" votes="9536" content="hello you !" nbComments="825"></idea-card-collapsed>
-        <idea-card-collapsed title="hello 2" votes="2" content="hello you !" nbComments="825"></idea-card-collapsed>
-        <idea-card-collapsed title="hello 3" votes="150" content="hello you !" nbComments="825"></idea-card-collapsed>
-        <idea-card-collapsed title="hello 4" votes="56" content="hello you !" nbComments="825"></idea-card-collapsed>
+        <idea-card-collapsed v-for="(idea, index) in product.ideas" :title="idea.title" :content="idea.description" :votes="idea.upvote" :key="index"></idea-card-collapsed>
       </div>
       <div class="column">
-        <listener-profile-card></listener-profile-card>
+        <listener-profile-card :name="product.name" :industry="industry.name" :logo="logo.url" :bio="product.description"  :brandColor="product.color" :website="product.website"></listener-profile-card>
       </div>
     </div>
   </section>
@@ -26,7 +23,27 @@ export default {
     theMenu,
     ideaCardCollapsed,
     listenerProfileCard
-  }
+  },
+  data() {
+    return {
+      product: {},
+      logo: {},
+      industry: {},
+    }
+  },
+  async beforeMount() {
+    var self = this;
+
+    const product = await this.$axios.$get(`/product/${this.$route.params.lstnrprofile}`)
+    .then(function(response) {
+      self.product = response;
+      self.industry = response.industry;
+      self.logo = response.logo;
+    })
+    .catch(function (error){
+      console.log(error);
+    })
+  },
 }
 </script>
 
@@ -34,6 +51,7 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
+  margin-top: 100px;
 }
 
 .title {

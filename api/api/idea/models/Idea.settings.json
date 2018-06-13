@@ -21,11 +21,6 @@
       "max": 9999,
       "type": "integer"
     },
-    "author": {
-      "model": "user",
-      "via": "ideas",
-      "plugin": "users-permissions"
-    },
     "comments": {
       "collection": "comment",
       "via": "idea"
@@ -35,6 +30,11 @@
       "minLength": 10,
       "type": "text",
       "required": true
+    },
+    "author": {
+      "model": "user",
+      "via": "ideas",
+      "plugin": "users-permissions"
     }
   }
 }

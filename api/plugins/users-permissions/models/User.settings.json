@@ -39,14 +39,6 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "ideas": {
-      "collection": "idea",
-      "via": "author"
-    },
-    "comments": {
-      "collection": "comment",
-      "via": "author"
-    },
     "points": {
       "max": 9999,
       "type": "integer"
@@ -72,6 +64,18 @@
       "maxLength": 500,
       "type": "text",
       "required": true
+    },
+    "comments": {
+      "collection": "comment",
+      "via": "author"
+    },
+    "ideas": {
+      "collection": "idea",
+      "via": "author"
+    },
+    "products": {
+      "collection": "product",
+      "via": "owner"
     }
   },
   "collectionName": "users-permissions_user"

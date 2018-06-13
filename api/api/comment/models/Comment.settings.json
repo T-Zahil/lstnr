@@ -15,11 +15,6 @@
       "model": "idea",
       "via": "comments"
     },
-    "author": {
-      "model": "user",
-      "via": "comments",
-      "plugin": "users-permissions"
-    },
     "upvote": {
       "max": 9999,
       "type": "integer"
@@ -29,6 +24,11 @@
       "minLength": 4,
       "type": "text",
       "required": true
+    },
+    "author": {
+      "model": "user",
+      "via": "comments",
+      "plugin": "users-permissions"
     }
   }
 }

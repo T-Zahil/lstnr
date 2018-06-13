@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "sample-strapi-app",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application.",
@@ -21,25 +21,22 @@
   "dependencies": {
     "lodash": "4.x.x",
     "strapi": "3.0.0-alpha.12.1.3",
-    "strapi-bookshelf": "3.0.0-alpha.12.1.3",
-    "strapi-knex": "3.0.0-alpha.12.1.3",
-    "knex": "latest",
-    "mysql": "2.15.0"
+    "strapi-mongoose": "3.0.0-alpha.12.1.3"
   },
   "author": {
-    "name": "Thomas",
+    "name": "jimlaurie",
     "email": "",
     "url": ""
   },
   "maintainers": [
     {
-      "name": "Thomas",
+      "name": "jimlaurie",
       "email": "",
       "url": ""
     }
   ],
   "strapi": {
-    "uuid": "389e9c2f-4730-443a-bc3e-eefffe68eb2f"
+    "uuid": "ffb4216f-4516-4f6f-a1f9-0fc72c71d090"
   },
   "engines": {
     "node": ">= 9.0.0",

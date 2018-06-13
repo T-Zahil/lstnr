@@ -1,24 +1,24 @@
 <template>
   <div class="card card-lstnr-prorfile">
-    <div class="card-image" style="background-color: #6441A4">
+    <div class="card-image" :style="{ backgroundColor: `#${brandColor}`}">
       <figure class="image is-96x96">
-        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+        <img :src="'http://localhost:1337' + logo" alt="The brand logo">
       </figure>
       <div class="card-image-title">
-        Discord
+        {{ name }}
       </div>
-      <b-tag rounded style="color: #6441A4" type="is-white">Gaming</b-tag>
+      <b-tag rounded v-bind:style="{ color: `#${brandColor}`}" type="is-white">{{ industry }}</b-tag>
     </div>
     <div class="card-content">
       <p class="content">
-        All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone. Stop paying for TeamSpeak servers and hassling with Skype. Simplify your life.
+        {{ bio }}
       </p>
       <div class="additionnal-info">
-        <div class="additionnal-item">Website <a href="#"><span style="color: #6441A4; font-weight: bold; padding-left:20px;">discordapp.com</span></a></div>
+        <div class="additionnal-item">Website <a :href="website"><span v-bind:style="{ color: `#${brandColor}`, fontWeight: 'bold', paddingLeft: '20px' }">{{ website }}</span></a></div>
       </div>
     </div>
     <footer class="card-footer">
-      <a href="#" class="card-footer-item">Follow</a>
+      <a class="card-footer-item">Follow</a>
     </footer>
   </div>
 </template>
@@ -76,4 +76,10 @@
   }
 
 </style>
+
+<script>
+export default {
+  props: ['logo', 'name', 'brandColor', 'bio', 'industry', 'website'],
+}
+</script>
 

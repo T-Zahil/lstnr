@@ -8,14 +8,14 @@
     <div class="card-content">
       <upvote :votes="votes"></upvote>
       <p class="content" v-if="isTooLong(content)">
-          {{ content.substring(0, 300) + '...'}}
+          {{ removeMd(content).substring(0, 300) + '...'}}
       </p>
       <p class="content" v-else>
-          {{ content }}
+          {{ removeMd(content) }}
       </p>
     </div>
     <footer class="card-footer">
-      <a href="#" @click="test" class="card-footer-item">{{ nbComments }} Comments</a>
+      <a class="card-footer-item">See comments</a>
     </footer>
   </div>
 </template>
@@ -58,19 +58,8 @@ export default {
         return false;
       }
     },
-    async test() {
-            var self = this;
-            const hello = await this.$axios.$get('/idea', {
-                headers: {
-                  'Authorization': `Bearer ${self.token}`
-                },
-            })
-            .then(function(response) {
-              self.content = removeMarkdown(response[0].description);
-            })
-            .catch(function (error){
-              console.log(error.response);
-            })
+    removeMd(markdown) {
+      return removeMarkdown(markdown);
     }
   }
 }
