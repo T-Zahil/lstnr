@@ -31,8 +31,8 @@
             <lstnr-Week></lstnr-Week>
             <lstnr-Popular></lstnr-Popular>
           </div>
-          <div class="colum is-3">
-
+          <div class="column is-3">
+            <popular-users></popular-users>
           </div>
         </div>
       </div>
@@ -45,12 +45,14 @@ import theMenu from '~/components/theMenu.vue'
 import listenerCard from '~/components/listenerCard.vue'
 import lstnrWeek from '~/components/lstnrWeek.vue'
 import lstnrPopular from '~/components/lstnrPopular.vue'
+import popularUsers from '~/components/popularUsers.vue'
 export default {
   components: {
     theMenu,
     listenerCard,
     lstnrWeek,
-    lstnrPopular
+    lstnrPopular,
+    popularUsers
   }
 }
 </script>
