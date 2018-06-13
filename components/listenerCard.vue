@@ -48,6 +48,12 @@ export default {
 .card {
   border-radius: 8px;
   box-shadow: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+    transform: scale(1.01);
+  }
   .card-image {
     display: flex;
     justify-content: center;
