@@ -11,16 +11,16 @@
     </div>
     <div class="columns">
       <div class="column">
-        <listener-card name="Twitch" cat="gaming" desc="Twitch is the number one online streaming platform focused on video games and real-life shows." views="12034" ideas="124"></listener-card>
+        <listener-card name="Twitch" cat="gaming" color="#6445A1" desc="Twitch is the number one online streaming platform focused on video games and real-life shows." views="12034" ideas="124"></listener-card>
       </div>
       <div class="column">
-        <listener-card name="Cleanfox" cat="email" desc="Cleanfox help people clean their filled mailbox and plant trees for them." views="239" ideas="43"></listener-card>
+        <listener-card name="Cleanfox" cat="email" color="#1CA9F3" desc="Cleanfox help people clean their filled mailbox and plant trees for them." views="239" ideas="43"></listener-card>
       </div>
       <div class="column">
-        <listener-card name="Mailchimp" cat="crm" desc="With Mailchimp, easily manage your emailing campaigns and touch more users, with the right message at the right time." views="456" ideas="123"></listener-card>
+        <listener-card name="Mailchimp" cat="crm" color="#8E684D" desc="With Mailchimp, easily manage your emailing campaigns and touch more users, with the right message at the right time." views="456" ideas="123"></listener-card>
       </div>
       <div class="column">
-        <listener-card name="Scrivener" cat="writing" desc="Scrivener helps writers write their novels, and allows them to manage their story easily." views="12 034" ideas="124"></listener-card>
+        <listener-card name="Scrivener" cat="writing" color="#0C0C0C" desc="Scrivener helps writers write their novels, and allows them to manage their story easily." views="12 034" ideas="124"></listener-card>
       </div>
     </div>
   </section>

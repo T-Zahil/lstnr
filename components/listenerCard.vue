@@ -1,6 +1,6 @@
 <template>
   <div class="card card--small-lstnr">
-    <div class="card-image" style="background-color: #6441A4">
+    <div class="card-image" :style="'background-color:' + color">
       <figure class="image is-96x96">
         <img :src="image" alt="">
       </figure>
@@ -34,7 +34,7 @@
 <script>
 export default {
   name: 'Card',
-  props: ['name', 'cat', 'desc', 'views', 'ideas'],
+  props: ['name', 'cat', 'color', 'desc', 'views', 'ideas'],
   data() {
     return {
       image: require('~/static/' + this.name + '.jpg')
