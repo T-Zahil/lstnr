@@ -1,6 +1,5 @@
 <template>
   <section>
-    <the-Menu></the-Menu>
     <div class="columns header">
       <section class="hero column is-7">
         <div class="hero-body">
@@ -42,7 +41,6 @@
 </template>
 
 <script>
-import theMenu from '~/components/theMenu.vue'
 import listenerCard from '~/components/listenerCard.vue'
 import lstnrWeek from '~/components/lstnrWeek.vue'
 import lstnrPopular from '~/components/lstnrPopular.vue'
@@ -50,7 +48,6 @@ import popularUsers from '~/components/popularUsers.vue'
 import popularIdeas from '~/components/popularIdeas.vue'
 export default {
   components: {
-    theMenu,
     listenerCard,
     lstnrWeek,
     lstnrPopular,

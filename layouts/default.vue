@@ -1,8 +1,19 @@
 <template>
   <div>
+    <the-Menu></the-Menu>
     <nuxt/>
   </div>
 </template>
+
+<script>
+import theMenu from '~/components/theMenu.vue'
+
+export default {
+  components: {
+    theMenu
+  }
+}
+</script>
 
 <style lang="scss">
 @font-face {

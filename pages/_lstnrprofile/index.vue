@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper">
     <section class="container profile">
-      <the-Menu></the-Menu>
       <div class="columns">
         <div class="column is-two-thirds ideas">
           <div class="ideas__header columns">
@@ -30,14 +29,12 @@
 </template>
 
 <script>
-import theMenu from '~/components/theMenu.vue'
 import idea from '~/components/idea.vue'
 import listenerProfileCard from '~/components/listenerProfileCard.vue'
 
 export default {
   name: 'profile',
   components: {
-    theMenu,
     idea,
     listenerProfileCard
   },
@@ -45,22 +42,23 @@ export default {
     return {
       product: {},
       logo: {},
-      industry: {},
+      industry: {}
     }
   },
   async beforeMount() {
-    var self = this;
+    var self = this
 
-    const product = await this.$axios.$get(`/product/${this.$route.params.lstnrprofile}`)
-    .then(function(response) {
-      self.product = response;
-      self.industry = response.industry;
-      self.logo = response.logo;
-    })
-    .catch(function (error){
-      console.log(error);
-    })
-  },
+    const product = await this.$axios
+      .$get(`/product/${this.$route.params.lstnrprofile}`)
+      .then(function(response) {
+        self.product = response
+        self.industry = response.industry
+        self.logo = response.logo
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
+  }
 }
 </script>
 

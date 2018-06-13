@@ -13,7 +13,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .idea {
   .is-2 {
     display: flex;
