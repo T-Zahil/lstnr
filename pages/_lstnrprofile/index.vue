@@ -18,17 +18,11 @@
               </ul>
             </div>
           </div>
-          <idea title="Disable explicit image filtering for bot accounts" content="As the owner of one of the biggest nsfw bots the explicit image filtering of all bots accs breaks my opt-on commands, explicit image filtering for bots should use the users and bot owners filter settings and not be on by default for all bots" votes="810" nbComments="2">
-          </idea>
-          <idea title="Disable explicit image filtering for bot accounts" content="As the owner of one of the biggest nsfw bots the explicit image filtering of all bots accs breaks my opt-on commands, explicit image filtering for bots should use the users and bot owners filter settings and not be on by default for all bots" votes="810" nbComments="2">
-          </idea>
-          <idea title="Disable explicit image filtering for bot accounts" content="As the owner of one of the biggest nsfw bots the explicit image filtering of all bots accs breaks my opt-on commands, explicit image filtering for bots should use the users and bot owners filter settings and not be on by default for all bots" votes="810" nbComments="2">
-          </idea>
-          <idea title="Disable explicit image filtering for bot accounts" content="As the owner of one of the biggest nsfw bots the explicit image filtering of all bots accs breaks my opt-on commands, explicit image filtering for bots should use the users and bot owners filter settings and not be on by default for all bots" votes="810" nbComments="2">
+          <idea v-for="(idea, index) in product.ideas" :key="index" :title="idea.title" :content="idea.description" :votes="idea.upvote" nbComments="2">
           </idea>
         </div>
         <div class="column side">
-          <listener-profile-card></listener-profile-card>
+          <listener-profile-card :logo="logo.url" :name="product.name" :brandColor="product.color" :bio="product.description" :industry="industry.name" :website="product.website"></listener-profile-card>
         </div>
       </div>
     </section>

@@ -5,10 +5,10 @@
     </div>
     <div class="column desc">
       <div class="subtitle" v-if="author">{{ author }}</div>
-      <h4>Disable explicit image filtering for bot accounts</h4>
+      <h4>{{ title }}</h4>
       <p v-if="isTooLong(content)">{{ content.substring(0, 300) + '...'}}</p>
       <p v-else>{{ content }}</p>
-      <span @click="test">{{ nbComments }} Comments</span>
+      <span>See comments</span>
     </div>
   </div>
 </template>
@@ -71,24 +71,6 @@ export default {
       } else {
         return false
       }
-    },
-    async test() {
-      const hello = await this.$axios
-        .$get('/users', {
-          identifier: this.$data.email,
-          password: this.$data.password
-        })
-        .then(function(response) {
-          console.log(response)
-        })
-        .catch(function(error) {
-          console.log(error)
-          self.$toast.open({
-            duration: 2000,
-            message: `Error: ${error.response.data.message}`,
-            type: 'is-danger'
-          })
-        })
     }
   }
 }

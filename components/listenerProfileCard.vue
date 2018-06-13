@@ -26,7 +26,7 @@
       <div class="additionnal-info">
         <div class="additionnal-item">
           <a href="#">
-            <span>Website <a :href="website"><span v-bind:style="{ color: `#${brandColor}`, fontWeight: 'bold', paddingLeft: '20px' }">{{ website }}</span>
+            <span>Website <a :href="website"><span v-bind:style="{ color: `#${brandColor}`, fontWeight: 'bold', paddingLeft: '20px' }">{{ website }}</span></a></span>
           </a>
         </div>
       </div>

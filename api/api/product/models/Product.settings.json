@@ -56,6 +56,10 @@
       "model": "user",
       "via": "products",
       "plugin": "users-permissions"
+    },
+    "ideas": {
+      "collection": "idea",
+      "via": "product"
     }
   }
 }

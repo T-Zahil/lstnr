@@ -35,6 +35,10 @@
       "model": "user",
       "via": "ideas",
       "plugin": "users-permissions"
+    },
+    "product": {
+      "model": "product",
+      "via": "ideas"
     }
   }
 }
