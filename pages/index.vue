@@ -11,7 +11,7 @@
             <p>lstnr provides a one of a kind dialog between online products and their caring users.</p>
             <p>Challenge ideas, interract with teams and see what’s coming to constantly improve the products you love.</p>
             <div>
-              <button class="button">join lstnr</button>
+              <button class="button" @click="cardModal()">join lstnr</button>
               <span>or</span>
               <nuxt-link tag="button" class="button" to="add-a-product">
                 add a product
@@ -48,13 +48,25 @@ import lstnrWeek from '~/components/lstnrWeek.vue'
 import lstnrPopular from '~/components/lstnrPopular.vue'
 import popularUsers from '~/components/popularUsers.vue'
 import popularIdeas from '~/components/popularIdeas.vue'
+import FormLogin from '~/components/formLogin.vue'
+
 export default {
   components: {
     listenerCard,
     lstnrWeek,
     lstnrPopular,
     popularUsers,
-    popularIdeas
+    popularIdeas,
+    FormLogin
+  },
+  methods: {
+    cardModal() {
+      this.$modal.open({
+        parent: this,
+        component: FormLogin,
+        hasModalCard: true
+      })
+    }
   }
 }
 </script>
