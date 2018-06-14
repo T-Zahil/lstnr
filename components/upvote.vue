@@ -73,18 +73,26 @@
 
 
 <script>
+import { mapState } from 'vuex'
+import FormLogin from '~/components/formLogin.vue'
 export default {
   data() {
     return {
       isUpvoted: false
     }
   },
-  props: ['votes'],
+  props: ['votes', 'type', 'id'],
   computed: {
     formattedVotes() {
       return this.reverseString(
         this.chunk(this.reverseString(String(this.votes)), 3).join(',')
       )
+    },
+    ...mapState(['token', 'upvotes'])
+  },
+  mounted() {
+    if(this.upvotes.indexOf(this.id) !== -1) {
+      this.$data.isUpvoted = true;
     }
   },
   methods: {
@@ -105,8 +113,45 @@ export default {
         .reverse()
         .join('')
     },
-    upvote() {
+    async upvote() {
+      if(this.$data.isUpvoted) {
+        return false;
+      }
       this.$data.isUpvoted = true
+      const tmpvote = this.votes + 1;
+      const self = this;
+      const upvote = await this.$axios.$put(`/${this.type}/${this.id}`, {
+        upvote: tmpvote
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${self.token}`
+        }
+      })
+      .then(function(response) {
+        self.votes++;
+        self.$store.commit('upvote', self.id);
+      })
+      .catch(function (error){
+        if(error.response.data.statusCode === 403 || error.response.data.statusCode === 401) {
+          self.$modal.open({
+                parent: self,
+                component: FormLogin,
+                hasModalCard: true
+          });
+          self.$toast.open({
+            duration: 2000,
+            message: `You have to login in order to upvote`,
+            type: 'is-danger'
+          });
+        } else {
+          self.$toast.open({
+            duration: 2000,
+            message: `Error: ${error.response.data.message}`,
+            type: 'is-danger'
+          });
+        }
+      });
     }
   }
 }

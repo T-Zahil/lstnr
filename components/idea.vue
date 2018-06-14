@@ -1,7 +1,7 @@
 <template>
   <div class="idea columns">
     <div class="column is-2">
-      <up-vote :votes="votes"></up-vote>
+      <up-vote :votes="votes" type="idea" :id="id"></up-vote>
     </div>
     <div class="column desc">
       <div class="subtitle" v-if="author">{{ author }}</div>
@@ -69,7 +69,8 @@ export default {
     'nbComments',
     'author',
     'slug',
-    'product'
+    'product',
+    'id'
   ],
   components: {
     upVote

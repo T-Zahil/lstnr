@@ -11,6 +11,7 @@ const store = () => {
       },
       user: false,
       token: false,
+      upvotes: [],
     },
     mutations: {
       loggin(state, payload) {
@@ -20,6 +21,9 @@ const store = () => {
       logout(state) {
         state.user = false;
         state.token = false;
+      },
+      upvote(state, upvoteId) {
+        state.upvotes = [...state.upvotes, upvoteId];
       }
     }
   } )
