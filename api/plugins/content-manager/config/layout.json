@@ -19,5 +19,12 @@
         "appearance": ""
       }
     }
+  },
+  "comment": {
+    "attributes": {
+      "parent": {
+        "appearance": ""
+      }
+    }
   }
 }

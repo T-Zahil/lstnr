@@ -1,13 +1,13 @@
 <template>
   <div class="card card-lstnr-profile">
-    <div class="card-image" :style="{ backgroundColor: `#${brandColor}`}">
+    <div class="card-image" :style="{ backgroundColor: `#${product.color}`}">
       <figure class="image is-96x96">
-        <img :src="'http://localhost:1337' + logo" alt="The brand logo">
+        <img :src="'http://localhost:1337' + product.logo.url" alt="The brand logo">
       </figure>
       <div class="card-image-title">
-        {{ name }}
+        {{ product.name }}
       </div>
-      <b-tag rounded v-bind:style="{ color: `#${brandColor}`}" type="is-white">{{ industry }}</b-tag>
+      <b-tag rounded v-bind:style="{ color: `#${product.color}`}" type="is-white">{{ product.industry.name }}</b-tag>
     </div>
     <div class="card-content">
       <div class="level">
@@ -16,7 +16,7 @@
           <span>lstnrs</span>
         </div>
         <div class="level-item">
-          <p>78</p>
+          <p>{{ product.ideas.length }}</p>
           <span>feedbacks</span>
         </div>
       </div>
@@ -26,7 +26,7 @@
       <div class="additionnal-info">
         <div class="additionnal-item">
           <a href="#">
-            <span>Website <a :href="website"><span v-bind:style="{ color: `#${brandColor}`, fontWeight: 'bold', paddingLeft: '20px' }">{{ website }}</span></a></span>
+            <span>Website <a :href="website"><span v-bind:style="{ color: `#${product.color}`, fontWeight: 'bold', paddingLeft: '20px' }">{{ product.website }}</span></a></span>
           </a>
         </div>
       </div>
@@ -120,7 +120,7 @@
 
 <script>
 export default {
-  props: ['logo', 'name', 'brandColor', 'bio', 'industry', 'website'],
+  props: ['product'],
 }
 </script>
 

@@ -9,22 +9,22 @@
             </figure>
           </div>
           <div class="profile-content">
-            <p class="profile-name">John Smith</p>
-            <p class="profile-info">@johnsmith</p>
+            <p class="profile-name">{{ author.username }}</p>
+            <p class="profile-info">{{ `${author['company-position']} @${author.company}` }}</p>
           </div>
         </div>
-        <h1 class="title">Title is great !</h1>
-        <time class="card-time is-primary" datetime="2016-1-1">May 06, 2018 - 3:59am</time>
+        <h1 class="title">{{ idea.title }}</h1>
+        <time class="card-time is-primary">{{ `${new Date(idea.createdAt).toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' })} ${new Date(idea.createdAt).toLocaleTimeString()}` }}</time>
       </div>
       <div class="content-and-upvote">
-        <upvote :votes="votes"></upvote>
+        <upvote :votes="idea.upvote" type="idea" :id="idea._id"></upvote>
         <p class="content">
-          {{ content }}
+          {{ idea.description }}
         </p>
       </div>
     </div>
     <footer class="card-footer">
-      <a href="#" class="card-footer-item">Reply</a>
+      <a @click="commentModal" class="card-footer-item">Reply</a>
     </footer>
   </div>
 </template>
@@ -96,11 +96,24 @@
 
 <script>
 import upvote from '~/components/upvote.vue'
+import FormComment from '~/components/formComment.vue'
 
 export default {
-  props: ['title', 'content', 'votes', 'nbComments'],
+  props: ['idea', 'author'],
   components: {
     upvote
+  },
+  methods: {
+    commentModal() {
+        this.$modal.open({
+            parent: this,
+            props: {
+              idea: this.idea._id
+            },
+            component: FormComment,
+            hasModalCard: true
+        })
+    }
   }
 }
 </script>

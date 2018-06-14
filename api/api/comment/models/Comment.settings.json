@@ -29,6 +29,9 @@
       "model": "user",
       "via": "comments",
       "plugin": "users-permissions"
+    },
+    "parent": {
+      "type": "string"
     }
   }
 }

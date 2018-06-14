@@ -76,11 +76,6 @@
 import { mapState } from 'vuex'
 import FormLogin from '~/components/formLogin.vue'
 export default {
-  data() {
-    return {
-      isUpvoted: false
-    }
-  },
   props: ['votes', 'type', 'id'],
   computed: {
     formattedVotes() {
@@ -88,12 +83,13 @@ export default {
         this.chunk(this.reverseString(String(this.votes)), 3).join(',')
       )
     },
+    isUpvoted() {
+      if(this.upvotes.indexOf(this.id) !== -1) {
+        return true;
+      }
+      return false;
+    },
     ...mapState(['token', 'upvotes'])
-  },
-  mounted() {
-    if(this.upvotes.indexOf(this.id) !== -1) {
-      this.$data.isUpvoted = true;
-    }
   },
   methods: {
     chunk(str, n) {
@@ -114,7 +110,7 @@ export default {
         .join('')
     },
     async upvote() {
-      if(this.$data.isUpvoted) {
+      if(this.isUpvoted) {
         return false;
       }
       this.$data.isUpvoted = true

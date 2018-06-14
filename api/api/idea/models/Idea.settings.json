@@ -23,6 +23,7 @@
     },
     "comments": {
       "collection": "comment",
+      "dominant": true,
       "via": "idea"
     },
     "description": {

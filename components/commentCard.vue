@@ -1,5 +1,5 @@
 <template>
-  <div class="card comment-card" :class="['depth-' + depth]">
+  <div class="card comment-card" :class="{ 'has-parent': comment.parent }">
     <div class="card-content">
       <div class="card-info">
         <div class="profile">
@@ -9,21 +9,21 @@
             </figure>
           </div>
           <div class="profile-content">
-            <p class="profile-name">Léo Loriol</p>
-            <p class="profile-info">Student @hetic - Cofounder, lstnr</p>
+            <p class="profile-name">{{ author.username }}</p>
+            <p class="profile-info">{{ `${author['company-position']} @${author.company}` }}</p>
           </div>
         </div>
-        <time class="card-time is-primary" datetime="2016-1-1">May 06, 2018 - 3:59am</time>
+        <time class="card-time is-primary" :datetime="comment.createdAt">{{ `${new Date(comment.createdAt).toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' })} ${new Date(comment.createdAt).toLocaleTimeString()}` }}</time>
       </div>
       <div class="content-and-upvote">
-      <upvote :votes="votes"></upvote>
+      <upvote :votes="comment.upvote" type="comment" :id="comment._id"></upvote>
       <p class="content">
-          {{ content }}
+          {{ comment.description }}
       </p>
       </div>
     </div>
-    <footer class="card-footer" v-if="depth < 2">
-      <a href="#" class="card-footer-item">Reply</a>
+    <footer class="card-footer" v-if="!comment.parent">
+      <a @click="commentModal" v-if="author._id !== user._id" class="card-footer-item">Reply</a>
     </footer>
   </div>
 </template>
@@ -90,12 +90,12 @@
     margin-bottom: 1rem;
   }
 
-  .depth-2 {
+  .has-parent {
     margin-left: 4rem;
     position: relative;
   }
 
-  .depth-2::before {
+  .has-parent::before {
     content: '';
     border: 2px solid lightgray;
     height: 100%;
@@ -106,11 +106,45 @@
 
 <script>
 import upvote from '~/components/upvote.vue'
+import { mapState } from 'vuex'
+import FormComment from '~/components/formComment.vue'
 
 export default {
-  props: ['title', 'content', 'votes', 'depth'],
+  props: ['comment'],
   components: {
     upvote
+  },
+  computed: {
+    ...mapState(['token', 'user'])
+  },
+  data() {
+    return {
+      author: {},
+    }
+  },
+  async beforeMount() {
+    var self = this
+
+    const author = await this.$axios.$get(`/user/${this.comment.author}`)
+      .then(function(response) {
+        self.author = response
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
+  },
+  methods: {
+    commentModal() {
+        this.$modal.open({
+            parent: this,
+            props: {
+              parentComment: this.comment._id,
+              idea: this.comment.idea
+            },
+            component: FormComment,
+            hasModalCard: true
+        })
+    }
   }
 }
 </script>

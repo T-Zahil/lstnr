@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" v-if="dataReady">
     <section class="container profile">
       <div class="columns">
         <div class="column is-two-thirds ideas">
@@ -21,7 +21,7 @@
           </idea>
         </div>
         <div class="column side">
-          <listener-profile-card :logo="logo.url" :name="product.name" :brandColor="product.color" :bio="product.description" :industry="industry.name" :website="product.website"></listener-profile-card>
+          <listener-profile-card :product="product"></listener-profile-card>
         </div>
       </div>
     </section>
@@ -43,7 +43,8 @@ export default {
     return {
       product: {},
       logo: {},
-      industry: {}
+      industry: {},
+      dataReady: false
     }
   },
   async beforeMount() {
@@ -55,6 +56,7 @@ export default {
         self.product = response
         self.industry = response.industry
         self.logo = response.logo
+        self.dataReady = true
       })
       .catch(function(error) {
         console.log(error)
