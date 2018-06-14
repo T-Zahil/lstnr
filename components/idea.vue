@@ -5,7 +5,9 @@
     </div>
     <div class="column desc">
       <div class="subtitle" v-if="author">{{ author }}</div>
-      <h4>{{ title }}</h4>
+      <nuxt-link :to="product + '/idea/' + slug">
+        <h4>{{ title }}</h4>
+      </nuxt-link>
       <p v-if="isTooLong(content)">{{ content.substring(0, 300) + '...'}}</p>
       <p v-else>{{ content }}</p>
       <span>See comments</span>
@@ -60,7 +62,15 @@
 import upVote from '~/components/upvote.vue'
 
 export default {
-  props: ['title', 'content', 'votes', 'nbComments', 'author'],
+  props: [
+    'title',
+    'content',
+    'votes',
+    'nbComments',
+    'author',
+    'slug',
+    'product'
+  ],
   components: {
     upVote
   },

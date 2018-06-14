@@ -17,7 +17,7 @@
               </ul>
             </div>
           </div>
-          <idea v-for="(idea, index) in product.ideas" :key="index" :title="idea.title" :content="idea.description" :votes="idea.upvote" nbComments="2">
+          <idea v-for="(idea, index) in product.ideas" :key="index" :product="product.slug" :slug="idea.slug" :title="idea.title" :content="idea.description" :votes="idea.upvote" nbComments="2">
           </idea>
         </div>
         <div class="column side">
@@ -62,11 +62,11 @@ export default {
   },
   methods: {
     feedbackModal() {
-            this.$modal.open({
-                parent: this,
-                component: formIdea,
-                hasModalCard: true
-            })
+      this.$modal.open({
+        parent: this,
+        component: formIdea,
+        hasModalCard: true
+      })
     }
   }
 }
