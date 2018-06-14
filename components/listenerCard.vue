@@ -1,6 +1,6 @@
 <template>
   <div class="card card--small-lstnr">
-    <div class="card-image" :style="'background-color:' + color">
+    <div class="card-image" :style="'background-color: #' + color">
       <figure class="image is-96x96">
         <img :src="image" alt="">
       </figure>
@@ -34,10 +34,10 @@
 <script>
 export default {
   name: 'Card',
-  props: ['name', 'cat', 'color', 'desc', 'views', 'ideas'],
+  props: ['name', 'cat', 'color', 'desc', 'views', 'ideas', 'logo'],
   data() {
     return {
-      image: require('~/static/' + this.name + '.jpg')
+      image: 'http://api-lstnr.thomas-sanlis.com' + this.logo
     }
   }
 }
@@ -62,10 +62,16 @@ export default {
     padding: 1rem 0;
     border-radius: 8px 8px 0 0;
     figure {
-      width: 40%;
-      height: auto;
+      width: 96px;
+      height: 96px;
       margin-bottom: 0.5rem;
       box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      padding: 0.5rem;
+      background-color: #fff;
       img {
         border-radius: 8px;
       }

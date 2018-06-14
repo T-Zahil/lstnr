@@ -30,7 +30,7 @@
         <div class="columns">
           <div class="column is-9">
             <lstnr-Week></lstnr-Week>
-            <lstnr-Popular></lstnr-Popular>
+            <lstnr-Popular :products="products"></lstnr-Popular>
             <popular-ideas></popular-ideas>
           </div>
           <div class="column is-3">
@@ -58,6 +58,11 @@ export default {
     popularUsers,
     popularIdeas,
     FormLogin
+  },
+  async asyncData({ app, route, error }) {
+    let response = await app.$axios.get(`product`)
+    const products = response.data
+    return { products }
   },
   methods: {
     cardModal() {

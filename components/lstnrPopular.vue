@@ -11,16 +11,16 @@
     </div>
     <div class="columns">
       <div class="column">
-        <listener-card name="Twitch" cat="gaming" color="#6445A1" desc="Twitch is the number one online streaming platform focused on video games and real-life shows." views="12034" ideas="124"></listener-card>
+        <listener-card :name="products[0].name" :cat="products[0].industry.name" :color="products[0].color" :desc="products[0].description" :logo="products[0].logo.url" views="12034" ideas="124"></listener-card>
       </div>
       <div class="column">
-        <listener-card name="Cleanfox" cat="email" color="#1CA9F3" desc="Cleanfox help people clean their filled mailbox and plant trees for them." views="239" ideas="43"></listener-card>
+        <listener-card :name="products[1].name" :cat="products[1].industry.name" :color="products[1].color" :desc="products[1].description" :logo="products[1].logo.url" views="12034" ideas="124"></listener-card>
       </div>
       <div class="column">
-        <listener-card name="Mailchimp" cat="crm" color="#8E684D" desc="With Mailchimp, easily manage your emailing campaigns and touch more users, with the right message at the right time." views="456" ideas="123"></listener-card>
+        <listener-card :name="products[2].name" :cat="products[2].industry.name" :color="products[2].color" :desc="products[2].description" :logo="products[2].logo.url" views="12034" ideas="124"></listener-card>
       </div>
       <div class="column">
-        <listener-card name="Scrivener" cat="writing" color="#0C0C0C" desc="Scrivener helps writers write their novels, and allows them to manage their story easily." views="12 034" ideas="124"></listener-card>
+        <listener-card :name="products[3].name" :cat="products[3].industry.name" :color="products[3].color" :desc="products[3].description" :logo="products[3].logo.url" views="12034" ideas="124"></listener-card>
       </div>
     </div>
   </section>
@@ -31,6 +31,7 @@ import listenerCard from '~/components/listenerCard.vue'
 
 export default {
   name: 'lstnrPopular',
+  props: ['products'],
   components: {
     listenerCard
   }
