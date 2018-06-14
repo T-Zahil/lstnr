@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs');
+const path = require('path');
 const _ = require('lodash');
 
 const Service = require('../services/ContentTypeBuilder');
@@ -18,10 +19,10 @@ module.exports = {
 
     model = _.toLower(model);
 
-    if (!source && !_.get(strapi.models, model)) return ctx.badRequest(null, [{ messages: [{ id: 'request.error.model.unknown' }] }]);
+    if (!source && !_.get(strapi.models, model)) return ctx.badRequest(null, [{ messages: [{ id: 'request.error.model.unknow' }] }]);
 
     if (source && !_.get(strapi.plugins, [source, 'models', model])) {
-      return ctx.badRequest(null, [{ messages: [{ id: 'request.error.model.unknown' }] }]);
+      return ctx.badRequest(null, [{ messages: [{ id: 'request.error.model.unknow' }] }]);
     }
 
     ctx.send({ model: Service.getModel(model, source) });
@@ -86,12 +87,12 @@ module.exports = {
 
   updateModel: async ctx => {
     const { model } = ctx.params;
-    const { name, description, mainField, connection, collectionName, attributes = [], plugin } = ctx.request.body;
+    const { name, description, connection, collectionName, attributes = [], plugin } = ctx.request.body;
 
     if (!name) return ctx.badRequest(null, [{ messages: [{ id: 'request.error.name.missing' }] }]);
     if (!_.includes(Service.getConnections(), connection)) return ctx.badRequest(null, [{ messages: [{ id: 'request.error.connection.unknow' }] }]);
     if (strapi.models[_.toLower(name)] && name !== model) return ctx.badRequest(null, [{ messages: [{ id: 'request.error.model.exist' }] }]);
-    if (!strapi.models[_.toLower(model)] && plugin && !strapi.plugins[_.toLower(plugin)].models[_.toLower(model)]) return ctx.badRequest(null, [{ messages: [{ id: 'request.error.model.unknown' }] }]);
+    if (!strapi.models[_.toLower(model)] && plugin && !strapi.plugins[_.toLower(plugin)].models[_.toLower(model)]) return ctx.badRequest(null, [{ messages: [{ id: 'request.error.model.unknow' }] }]);
     if (!_.isNaN(parseFloat(name[0]))) return ctx.badRequest(null, [{ messages: [{ id: 'request.error.model.name' }] }]);
     if (plugin && !strapi.plugins[_.toLower(plugin)]) return ctx.badRequest(null, [{ message: [{ id: 'request.error.plugin.name' }] }]);
 
@@ -121,10 +122,6 @@ module.exports = {
         description
       };
       modelJSON.attributes = formatedAttributes;
-
-      if (mainField) {
-        modelJSON.info.mainField = mainField;
-      }
 
       const clearRelationsErrors = Service.clearRelations(model, plugin);
 
@@ -165,7 +162,7 @@ module.exports = {
   deleteModel: async ctx => {
     const { model } = ctx.params;
 
-    if (!_.get(strapi.models, model)) return ctx.badRequest(null, [{ messages: [{ id: 'request.error.model.unknown' }] }]);
+    if (!_.get(strapi.models, model)) return ctx.badRequest(null, [{ messages: [{ id: 'request.error.model.unknow' }] }]);
 
     strapi.reload.isWatching = false;
 
@@ -217,6 +214,6 @@ module.exports = {
       }
     }
 
-    ctx.send({ tableExists: true });
+    ctx.send({ tableExists: true })
   }
 };

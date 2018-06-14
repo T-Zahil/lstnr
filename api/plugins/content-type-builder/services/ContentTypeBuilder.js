@@ -1,6 +1,6 @@
 'use strict';
 
-const path = require('path');
+const path = require('path')
 const fs = require('fs');
 const _ = require('lodash');
 const generator = require('strapi-generate');
@@ -105,14 +105,13 @@ module.exports = {
     return {
       name: _.get(model, 'info.name', 'model.name.missing'),
       description: _.get(model, 'info.description', 'model.description.missing'),
-      mainField: _.get(model, 'info.mainField', ''),
       connection: model.connection,
       collectionName: model.collectionName,
       attributes: attributes
     };
   },
 
-  getConnections: () => {
+  getConnections: () => {
     return _.keys(strapi.config.currentEnvironment.database.connections);
   },
 
@@ -126,7 +125,7 @@ module.exports = {
         rootPath: strapi.config.appPath,
         args: {
           api: name,
-          description: _.replace(description, /\"/g, '\\"'), // eslint-disable-line no-useless-escape
+          description: _.replace(description, /\"/g, '\\"'),
           attributes,
           connection,
           collectionName: !_.isEmpty(collectionName) ? collectionName : undefined,
@@ -191,7 +190,7 @@ module.exports = {
             [attribute.params.multiple ? 'collection' : 'model']: 'file',
             via,
             plugin: 'upload'
-          };
+          }
         }
       } else if (_.has(attribute, 'params.target')) {
         const relation = attribute.params;
@@ -202,7 +201,6 @@ module.exports = {
         };
 
         switch (relation.nature) {
-          case 'oneWay':
           case 'oneToOne':
           case 'manyToOne':
             attr.model = relation.target;
@@ -214,13 +212,11 @@ module.exports = {
           default:
         }
 
-        if(relation.nature !== 'oneWay') {
-          attr.via = relation.key;
-        }
+        attr.via = relation.key;
         attr.dominant = relation.dominant;
 
-        if (_.trim(relation.pluginValue)) {
-          attr.plugin = _.trim(relation.pluginValue);
+        if (relation.pluginValue) {
+          attr.plugin = relation.pluginValue;
         }
 
         attrs[attribute.name] = attr;
@@ -357,32 +353,25 @@ module.exports = {
             const attr = {};
 
             switch (params.nature) {
-              case 'oneWay':
-                return;
               case 'oneToOne':
               case 'oneToMany':
                 attr.model = model.toLowerCase();
                 break;
               case 'manyToOne':
                 attr.collection = model.toLowerCase();
-                break;
-              case 'manyToMany': {
+              case 'manyToMany':
                 attr.collection = model.toLowerCase();
 
                 if (!params.dominant) {
                   attr.dominant = true;
                 }
                 break;
-              }
               default:
             }
 
             attr.via = name;
             attr.columnName = params.targetColumnName;
-
-            if (_.trim(source)) {
-              attr.plugin = _.trim(source);
-            }
+            attr.plugin = source;
 
             modelJSON.attributes[params.key] = attr;
 
@@ -465,7 +454,7 @@ module.exports = {
           }
         }
       }
-    };
+    }
 
     const recurciveDeleteFiles = folderPath => {
       try {
@@ -501,7 +490,7 @@ module.exports = {
           }
         });
       }
-    };
+    }
 
     recurciveDeleteFiles(apiPath);
 

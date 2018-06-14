@@ -52,7 +52,7 @@
             title: this.$data.title,
             description: this.$data.description,
             product: this.$route.params.lstnrprofile,
-            user: this.user.id,
+            author: this.user._id,
             upvote: 0
           },
           {

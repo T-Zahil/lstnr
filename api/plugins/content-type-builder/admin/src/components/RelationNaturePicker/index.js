@@ -12,8 +12,6 @@ import { FormattedMessage } from 'react-intl';
 
 import RelationIco from 'components/RelationIco';
 
-import OneWay from '../../assets/images/one_way.svg';
-import OneWaySelected from '../../assets/images/one_way_selected.svg';
 import ManyToMany from '../../assets/images/many_to_many.svg';
 import ManyToManySelected from '../../assets/images/many_to_many_selected.svg';
 import ManyToOne from '../../assets/images/many_to_one.svg';
@@ -29,11 +27,6 @@ class RelationNaturePicker extends React.Component { // eslint-disable-line reac
   constructor(props) {
     super(props);
     this.icos = [
-      {
-        name: 'oneWay',
-        ico: OneWay,
-        icoSelected: OneWaySelected,
-      },
       {
         name: 'oneToOne',
         ico: OneToOne,
@@ -61,8 +54,6 @@ class RelationNaturePicker extends React.Component { // eslint-disable-line reac
     let contentTypeTarget = startCase(this.props.contentTypeTarget);
 
     switch (this.props.selectedIco) {
-      case 'oneWay':
-        break;
       case 'oneToMany':
         contentTypeTarget = pluralize(contentTypeTarget);
         break;
