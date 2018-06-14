@@ -3,9 +3,6 @@ const { 
 } = require( './config' )
 
 module.exports = {
-  /*
-   ** Headers of the page
-   */
   head: {
     title: 'lstnr',
     meta: [ {
@@ -27,7 +24,10 @@ module.exports = {
       href: '/favicon.ico'
     } ]
   },
-  plugins: [{ src: '~/plugins/localStorage.js', ssr: false }],
+  plugins: [ {
+    src: '~/plugins/localStorage.js',
+    ssr: false
+  } ],
   /*
    ** Customize the progress bar color
    */
