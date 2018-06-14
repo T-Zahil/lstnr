@@ -34,7 +34,9 @@
           </div>
         </div>
         <div class="columns">
-          <lstnr-Popular :products="products"></lstnr-Popular>
+          <div class="column">
+            <lstnr-Popular :products="products"></lstnr-Popular>
+          </div>
         </div>
         <div class="columns">
           <div class="column is-2"></div>
