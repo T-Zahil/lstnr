@@ -8,11 +8,11 @@
       </div>
     </div>
     <section class="section popularIdeas__content">
-      <idea author="Allan Porter on Cornerio" title="Disable explicit image filtering for bot accounts" content="As the owner of one of the biggest nsfw bots the explicit image filtering of all bots accs breaks my opt-on commands, explicit image filtering for bots should use the users and bot owners filter settings and not be on by default for all bots" votes="810" nbComments="2">
+      <idea :author="ideas[0].author.username + ' on ' + ideas[0].product.name" :title="ideas[0].title" :content="ideas[0].description" :votes="ideas[0].upvote" nbComments="2">
       </idea>
-      <idea author="Allan Porter on Cornerio" title="Disable explicit image filtering for bot accounts" content="As the owner of one of the biggest nsfw bots the explicit image filtering of all bots accs breaks my opt-on commands, explicit image filtering for bots should use the users and bot owners filter settings and not be on by default for all bots" votes="810" nbComments="2">
+      <idea :author="ideas[1].author.username + ' on ' + ideas[1].product.name" :title="ideas[1].title" :content="ideas[1].description" :votes="ideas[1].upvote" nbComments="2">
       </idea>
-      <idea author="Allan Porter on Cornerio" title="Disable explicit image filtering for bot accounts" content="As the owner of one of the biggest nsfw bots the explicit image filtering of all bots accs breaks my opt-on commands, explicit image filtering for bots should use the users and bot owners filter settings and not be on by default for all bots" votes="810" nbComments="2">
+      <idea :author="ideas[2].author.username + ' on ' + ideas[2].product.name" :title="ideas[2].title" :content="ideas[2].description" :votes="ideas[2].upvote" nbComments="2">
       </idea>
     </section>
   </section>
@@ -24,6 +24,7 @@ import idea from '~/components/idea.vue'
 
 export default {
   name: 'popularIdeas',
+  props: ['ideas'],
   components: {
     upVote,
     idea

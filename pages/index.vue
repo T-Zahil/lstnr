@@ -39,7 +39,7 @@
         <div class="columns">
           <div class="column is-2"></div>
           <div class="column is-8">
-            <popular-ideas></popular-ideas>
+            <popular-ideas :ideas="ideas"></popular-ideas>
           </div>
           <div class="column is-2"></div>
         </div>
@@ -68,7 +68,9 @@ export default {
   async asyncData({ app, route, error }) {
     let response = await app.$axios.get(`product`)
     const products = response.data
-    return { products }
+    response = await app.$axios.get(`idea`)
+    const ideas = response.data
+    return { products, ideas }
   },
   methods: {
     cardModal() {
