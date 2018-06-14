@@ -1,11 +1,11 @@
 <template>
-  <div class="card comment-card" :class="{ 'has-parent': comment.parent }">
+  <div class="card comment-card" v-if="dataReady" :class="{ 'has-parent': comment.parent }">
     <div class="card-content">
       <div class="card-info">
         <div class="profile">
           <div class="profile-picture">
             <figure class="image is-64x64">
-              <img src="https://bulma.io/images/placeholders/64x64.png" alt="Placeholder image">
+              <img :src="`https://api.adorable.io/avatars/64/${author.email}.png`" alt="Placeholder image">
             </figure>
           </div>
           <div class="profile-content">
@@ -120,6 +120,7 @@ export default {
   data() {
     return {
       author: {},
+      dataReady: false
     }
   },
   async beforeMount() {
@@ -128,6 +129,7 @@ export default {
     const author = await this.$axios.$get(`/user/${this.comment.author}`)
       .then(function(response) {
         self.author = response
+        self.dataReady = true;
       })
       .catch(function(error) {
         console.log(error)

@@ -5,7 +5,7 @@
         <div class="profile">
           <div class="profile-picture">
             <figure class="image is-64x64">
-              <img src="https://bulma.io/images/placeholders/64x64.png" alt="Placeholder image">
+              <img :src="`https://api.adorable.io/avatars/64/${author.email}.png`" alt="Placeholder image">
             </figure>
           </div>
           <div class="profile-content">

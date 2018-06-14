@@ -48,20 +48,14 @@
         </div>
         <div class="navbar-item is-hoverable" v-if="user">
           <div class="field is-grouped">
-            <figure class="image is-24x24">
-              <img class="avatar" src="https://bulma.io/images/placeholders/24x24.png">
+            <figure class="image">
+              <img class="avatar" :src="`https://api.adorable.io/avatars/40/${user.email}.png`">
             </figure>
             <div class="user">
               {{ user.username }}
             </div>
 
             <div class="navbar-dropdown is-boxed">
-              <a class="navbar-item" href="#">
-                Profile
-              </a>
-              <a class="navbar-item" href="#">
-                Settings
-              </a>
               <a class="navbar-item" @click="logout">
                 Logout
               </a>
@@ -107,6 +101,18 @@ export default {
 .navbar {
   height: 6rem;
   padding: 0 4rem;
+
+  .avatar {
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
+    max-height: initial;
+    border: solid 2px #732ffb;
+  }
+  .field.is-grouped {
+    display: flex;
+    align-items: center;
+  }
   .navbar-menu {
     .navbar-start {
       .navbar-item {
@@ -138,6 +144,7 @@ export default {
       }
     }
   }
+
 }
 </style>
 
