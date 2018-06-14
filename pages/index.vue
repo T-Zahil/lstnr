@@ -13,7 +13,9 @@
             <div>
               <button class="button">join lstnr</button>
               <span>or</span>
-              <button class="button">add a product</button>
+              <nuxt-link tag="button" class="button" to="add-a-product">
+                add a product
+              </nuxt-link>
             </div>
           </div>
         </div>
