@@ -2,7 +2,9 @@
   <nav class="navbar is-white is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://bulma.io">
-        <img src="~/assets/logo.png">
+        <nuxt-link to="/">
+          <img src="~/assets/logo.png">
+        </nuxt-link>
       </a>
       <div class="navbar-burger burger" @click="toggleBurger" :class="{'is-active': isBurgerActive}" data-target="navbar-Lstnr">
         <span aria-hidden="true"></span>
@@ -19,9 +21,7 @@
           </b-field>
         </div>
         <div class="navbar-item">
-          <a href="#">
-            Home
-          </a>
+          <nuxt-link to="/">Home</nuxt-link>
         </div>
         <div class="navbar-item">
           <a href="#">
