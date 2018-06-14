@@ -56,7 +56,9 @@ export default {
         files: '',
         logo: '',
         industry: ''
-      }
+      },
+      uploadedFile: '',
+      productId: ''
     }
   },
   computed: {
@@ -69,9 +71,14 @@ export default {
   },
   methods: {
     async postProduct() {
+      this.sendProduct()
+    },
+    capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    },
+    async sendProduct() {
       const self = this
-      const register = await this.$axios
-        .$post(
+      const register = await this.$axios.$post(
           '/product',
           {
             name: this.capitalizeFirstLetter(this.$data.product.name),
@@ -80,27 +87,27 @@ export default {
             color: this.$data.product.color,
             slug: slug(this.$data.product.name.toLowerCase()),
             owner: this.user._id,
-            industry: this.$data.product.industry
+            industry: this.$data.product.industry,
           },
           {
             headers: {
-              Authorization: `Bearer ${self.token}`
+              Authorization: `Bearer ${self.token}`,
             }
           }
         )
         .then(function(response) {
+          self.productId = response._id
+          self.linkLogo()
           self.$toast.open({
             duration: 3000,
             message: `Your Product has been successfully added, redirecting to product page in a second`,
             type: 'is-success'
           })
-          console.log('/' + slug(self.$data.product.name.toLowerCase()))
           setTimeout(() => {
             window.location.href = '/' + slug(self.$data.product.name.toLowerCase());
           }, 3000)
         })
         .catch(function(error) {
-          console.log(error)
           if (
             error.response.data.statusCode === 403 ||
             error.response.data.statusCode === 401
@@ -119,8 +126,24 @@ export default {
           }
         })
     },
-    capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
+    async linkLogo() {
+      const self = this;
+      let formData = new FormData();
+      formData.append("files", this.$data.product.files[0])
+      formData.append("refId", this.$data.productId)
+      formData.append("ref", "product")
+      formData.append("field", "logo")
+      const upload = await this.$axios
+        .$post(
+          '/upload',
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${self.token}`,
+              'Content-Type': 'multipart/form-data'
+            }
+          }
+        )
     }
   }
 }

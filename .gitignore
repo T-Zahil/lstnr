@@ -12,3 +12,6 @@ dist
 
 # Ignore database config
 api/config/environments/development/database.json
+
+#ignore files upload
+api/public/uploads/*
