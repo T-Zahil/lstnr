@@ -12,7 +12,6 @@
             <p>Challenge ideas, interract with teams and see what’s coming to constantly improve the products you love.</p>
             <div>
               <button class="button" @click="cardModal()">join lstnr</button>
-              <span>or</span>
               <nuxt-link tag="button" class="button" to="add-a-product">
                 add a product
               </nuxt-link>
@@ -20,22 +19,31 @@
           </div>
         </div>
       </section>
-      <div class="column is-1"></div>
-      <div class="column is-4 level">
-        <img src="~/assets/hero.png" alt="" class="level-item">
+      <div class="column is-5 level">
+        <img src="~/assets/hero.jpg" alt="" class="level-item">
       </div>
     </div>
     <div class="wrapper">
       <div class="container">
         <div class="columns">
-          <div class="column is-9">
+          <div class="column is-8">
             <lstnr-Week></lstnr-Week>
-            <lstnr-Popular :products="products"></lstnr-Popular>
-            <popular-ideas></popular-ideas>
           </div>
-          <div class="column is-3">
+          <div class="column is-4">
             <popular-users></popular-users>
           </div>
+        </div>
+        <div class="columns">
+          <div class="column is-8">
+            <lstnr-Popular :products="products"></lstnr-Popular>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-2"></div>
+          <div class="column is-8">
+            <popular-ideas></popular-ideas>
+          </div>
+          <div class="column is-2"></div>
         </div>
       </div>
     </div>
@@ -78,10 +86,12 @@ export default {
 
 <style lang="scss">
 .header {
-  padding: 7rem 0;
+  padding: 3rem 0;
   margin-top: 6rem;
-  background-image: url('../assets/hero-bg.jpg');
-  background-size: 100%;
+  background-image: url('../assets/hero-bg.png');
+  background-color: #f7f7f7;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
   .hero {
     .hero-body {
       margin-left: 3rem;
@@ -107,6 +117,7 @@ export default {
             border-radius: 20px;
             font-family: 'Futura Bold';
             line-height: 1.15rem;
+            font-size: 0.8rem;
             &:first-child {
               margin-right: 2rem;
               text-transform: uppercase;
@@ -127,6 +138,11 @@ export default {
     align-items: center;
     justify-content: center;
     display: flex;
+    padding-right: 5rem;
+    img {
+      border-radius: 8px;
+      box-shadow: 0 15px 25px 0 rgba(0, 0, 0, 0.2);
+    }
   }
 }
 .wrapper {

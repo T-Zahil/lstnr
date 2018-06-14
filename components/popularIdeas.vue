@@ -3,9 +3,8 @@
     <div class="head">
       <div class="titles">
         <h3 class="title">
-          ideas
+          ✍️ New threads
         </h3>
-        <h4 class="subtitle">popular</h4>
       </div>
     </div>
     <section class="section popularIdeas__content">
@@ -42,7 +41,8 @@ export default {
       .title {
         font-family: 'Futura Bold';
         font-size: 1.2rem;
-        margin-bottom: 0rem;
+        margin-bottom: 1.5rem;
+        color: #000;
       }
       .subtitle {
         font-family: 'Futura Bold';

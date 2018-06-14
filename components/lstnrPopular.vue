@@ -3,11 +3,9 @@
     <div class="head">
       <div class="titles">
         <h3 class="title">
-          lstnrs
+          ⚡️ Trendings
         </h3>
-        <h4 class="subtitle">popular</h4>
       </div>
-      <a href="#">see all</a>
     </div>
     <div class="columns">
       <div class="column">
@@ -21,6 +19,12 @@
       </div>
       <div class="column">
         <listener-card :name="products[3].name" :slug="products[3].slug" :cat="products[3].industry.name" :color="products[3].color" :desc="products[3].description" :logo="products[3].logo.url" views="12034" ideas="124"></listener-card>
+      </div>
+      <div class="column">
+        <listener-card :name="products[4].name" :slug="products[4].slug" :cat="products[4].industry.name" :color="products[4].color" :desc="products[4].description" :logo="products[4].logo.url" views="12034" ideas="124"></listener-card>
+      </div>
+      <div class="column">
+        <listener-card :name="products[5].name" :slug="products[5].slug" :cat="products[5].industry.name" :color="products[5].color" :desc="products[5].description" :logo="products[5].logo.url" views="12034" ideas="124"></listener-card>
       </div>
     </div>
   </section>
@@ -49,7 +53,8 @@ export default {
       .title {
         font-family: 'Futura Bold';
         font-size: 1.2rem;
-        margin-bottom: 0rem;
+        margin-bottom: 1.5rem;
+        color: #000;
       }
       .subtitle {
         font-family: 'Futura Bold';
