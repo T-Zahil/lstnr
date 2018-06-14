@@ -45,6 +45,7 @@
     },
     "ideas": {
       "collection": "idea",
+      "dominant": true,
       "via": "author"
     },
     "products": {

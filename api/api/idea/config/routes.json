@@ -1,6 +1,5 @@
 {
-  "routes": [
-    {
+  "routes": [ {
       "method": "GET",
       "path": "/idea",
       "handler": "Idea.find",
@@ -10,7 +9,7 @@
     },
     {
       "method": "GET",
-      "path": "/idea/:_id",
+      "path": "/idea/:slug",
       "handler": "Idea.findOne",
       "config": {
         "policies": []

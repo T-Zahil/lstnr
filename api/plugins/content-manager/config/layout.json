@@ -12,5 +12,12 @@
         "appearance": ""
       }
     }
+  },
+  "idea": {
+    "attributes": {
+      "slug": {
+        "appearance": ""
+      }
+    }
   }
 }

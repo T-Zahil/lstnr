@@ -14,8 +14,8 @@ module.exports = {
    * @return {Object|Array}
    */
 
-  find: async (ctx) => {
-    return strapi.services.idea.fetchAll(ctx.query);
+  find: async ( ctx ) => {
+    return strapi.services.idea.fetchAll( ctx.query );
   },
 
   /**
@@ -24,12 +24,12 @@ module.exports = {
    * @return {Object}
    */
 
-  findOne: async (ctx) => {
-    if (!ctx.params._id.match(/^[0-9a-fA-F]{24}$/)) {
+  findOne: async ( ctx ) => {
+    if ( !ctx.params.slug ) {
       return ctx.notFound();
     }
 
-    return strapi.services.idea.fetch(ctx.params);
+    return strapi.services.idea.fetch( ctx.params );
   },
 
   /**
@@ -38,8 +38,8 @@ module.exports = {
    * @return {Object}
    */
 
-  create: async (ctx) => {
-    return strapi.services.idea.add(ctx.request.body);
+  create: async ( ctx ) => {
+    return strapi.services.idea.add( ctx.request.body );
   },
 
   /**
@@ -48,8 +48,8 @@ module.exports = {
    * @return {Object}
    */
 
-  update: async (ctx, next) => {
-    return strapi.services.idea.edit(ctx.params, ctx.request.body) ;
+  update: async ( ctx, next ) => {
+    return strapi.services.idea.edit( ctx.params, ctx.request.body );
   },
 
   /**
@@ -58,7 +58,7 @@ module.exports = {
    * @return {Object}
    */
 
-  destroy: async (ctx, next) => {
-    return strapi.services.idea.remove(ctx.params);
+  destroy: async ( ctx, next ) => {
+    return strapi.services.idea.remove( ctx.params );
   }
 };

@@ -38,8 +38,6 @@ module.exports = {
    */
 
   fetch: ( params ) => {
-    console.log( 'cc' );
-    console.log( Product.schema.paths );
     return Product
       .findOne( _.pick( params, _.keys( Product.schema.paths ) ) )
       .populate( _.keys( _.groupBy( _.reject( strapi.models.product.associations, {

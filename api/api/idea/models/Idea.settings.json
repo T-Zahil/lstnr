@@ -39,6 +39,9 @@
       "model": "user",
       "via": "ideas",
       "plugin": "users-permissions"
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }
