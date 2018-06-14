@@ -1,7 +1,7 @@
 <template>
   <div class="idea columns">
     <div class="column is-2">
-      <up-vote votes="1266"></up-vote>
+      <up-vote :votes="votes"></up-vote>
     </div>
     <div class="column desc">
       <div class="subtitle" v-if="author">{{ author }}</div>

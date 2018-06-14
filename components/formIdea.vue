@@ -35,6 +35,7 @@
     import { mapState } from 'vuex'
 
     export default {
+      props: ['product'],
       data() {
         return {
           title: '',
@@ -42,7 +43,7 @@
         }
       },
       computed: {
-        ...mapState(['token'])
+        ...mapState(['token', 'user'])
       },
       methods: {
         async postIdea() {
@@ -50,6 +51,9 @@
           const register = await this.$axios.$post('/idea', {
             title: this.$data.title,
             description: this.$data.description,
+            product: this.$route.params.lstnrprofile,
+            user: this.user.id,
+            upvote: 0
           },
           {
             headers: {
@@ -63,10 +67,11 @@
               type: 'is-success'
             });
             self.$parent.close();
+            window.location.reload(true);
           })
           .catch(function (error){
             console.log(error.response);
-            if(error.response.data.statusCode === 403) {
+            if(error.response.data.statusCode === 403 || error.response.data.statusCode === 401) {
               self.$parent.close();
               self.$modal.open({
                     parent: self,
