@@ -1,5 +1,5 @@
 <template>
-  <div class="card card--small-lstnr">
+  <nuxt-link :to="slug" tag="div" class="card card--small-lstnr">
     <div class="card-image" :style="'background-color: #' + color">
       <figure class="image is-96x96">
         <img :src="image" alt="">
@@ -28,13 +28,13 @@
         {{ ideas }}
       </span>
     </footer>
-  </div>
+  </nuxt-link>
 </template>
 
 <script>
 export default {
   name: 'Card',
-  props: ['name', 'cat', 'color', 'desc', 'views', 'ideas', 'logo'],
+  props: ['name', 'cat', 'color', 'desc', 'views', 'ideas', 'logo', 'slug'],
   data() {
     return {
       image: 'http://api-lstnr.thomas-sanlis.com' + this.logo

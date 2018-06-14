@@ -11,16 +11,16 @@
     </div>
     <div class="columns">
       <div class="column">
-        <listener-card :name="products[0].name" :cat="products[0].industry.name" :color="products[0].color" :desc="products[0].description" :logo="products[0].logo.url" views="12034" ideas="124"></listener-card>
+        <listener-card :name="products[0].name" :slug="products[0].slug" :cat="products[0].industry.name" :color="products[0].color" :desc="products[0].description" :logo="products[0].logo.url" views="12034" ideas="124"></listener-card>
       </div>
       <div class="column">
-        <listener-card :name="products[1].name" :cat="products[1].industry.name" :color="products[1].color" :desc="products[1].description" :logo="products[1].logo.url" views="12034" ideas="124"></listener-card>
+        <listener-card :name="products[1].name" :slug="products[1].slug" :cat="products[1].industry.name" :color="products[1].color" :desc="products[1].description" :logo="products[1].logo.url" views="12034" ideas="124"></listener-card>
       </div>
       <div class="column">
-        <listener-card :name="products[2].name" :cat="products[2].industry.name" :color="products[2].color" :desc="products[2].description" :logo="products[2].logo.url" views="12034" ideas="124"></listener-card>
+        <listener-card :name="products[2].name" :slug="products[2].slug" :cat="products[2].industry.name" :color="products[2].color" :desc="products[2].description" :logo="products[2].logo.url" views="12034" ideas="124"></listener-card>
       </div>
       <div class="column">
-        <listener-card :name="products[3].name" :cat="products[3].industry.name" :color="products[3].color" :desc="products[3].description" :logo="products[3].logo.url" views="12034" ideas="124"></listener-card>
+        <listener-card :name="products[3].name" :slug="products[3].slug" :cat="products[3].industry.name" :color="products[3].color" :desc="products[3].description" :logo="products[3].logo.url" views="12034" ideas="124"></listener-card>
       </div>
     </div>
   </section>
