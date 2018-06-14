@@ -44,7 +44,7 @@ export default {
           {
             title: this.$data.title,
             description: this.$data.description,
-            product: this.$route.params.lstnrprofile,
+            product: this.product,
             author: this.user._id,
             upvote: 0
           },

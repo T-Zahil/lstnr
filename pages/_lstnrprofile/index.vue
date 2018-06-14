@@ -66,6 +66,9 @@ export default {
     feedbackModal() {
       this.$modal.open({
         parent: this,
+        props: {
+          product: this.product._id
+        },
         component: formIdea,
         hasModalCard: true
       })
