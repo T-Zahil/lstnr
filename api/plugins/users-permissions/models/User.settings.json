@@ -49,6 +49,7 @@
     },
     "products": {
       "collection": "product",
+      "dominant": true,
       "via": "owner"
     }
   }

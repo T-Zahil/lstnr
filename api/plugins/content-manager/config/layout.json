@@ -5,5 +5,12 @@
         "appearance": ""
       }
     }
+  },
+  "product": {
+    "attributes": {
+      "slug": {
+        "appearance": ""
+      }
+    }
   }
 }

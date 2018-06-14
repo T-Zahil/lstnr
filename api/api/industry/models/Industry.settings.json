@@ -16,6 +16,7 @@
     },
     "products": {
       "collection": "product",
+      "dominant": true,
       "via": "industry"
     }
   }

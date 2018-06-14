@@ -1,6 +1,5 @@
 {
-  "routes": [
-    {
+  "routes": [ {
       "method": "GET",
       "path": "/product",
       "handler": "Product.find",
@@ -10,7 +9,7 @@
     },
     {
       "method": "GET",
-      "path": "/product/:_id",
+      "path": "/product/:slug",
       "handler": "Product.findOne",
       "config": {
         "policies": []

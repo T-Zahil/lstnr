@@ -7,7 +7,7 @@
  */
 
 // Public dependencies.
-const _ = require('lodash');
+const _ = require( 'lodash' );
 
 module.exports = {
 
@@ -17,16 +17,18 @@ module.exports = {
    * @return {Promise}
    */
 
-  fetchAll: (params) => {
-    const convertedParams = strapi.utils.models.convertParams('product', params);
+  fetchAll: ( params ) => {
+    const convertedParams = strapi.utils.models.convertParams( 'product', params );
 
     return Product
       .find()
-      .where(convertedParams.where)
-      .sort(convertedParams.sort)
-      .skip(convertedParams.start)
-      .limit(convertedParams.limit)
-      .populate(_.keys(_.groupBy(_.reject(strapi.models.product.associations, {autoPopulate: false}), 'alias')).join(' '));
+      .where( convertedParams.where )
+      .sort( convertedParams.sort )
+      .skip( convertedParams.start )
+      .limit( convertedParams.limit )
+      .populate( _.keys( _.groupBy( _.reject( strapi.models.product.associations, {
+        autoPopulate: false
+      } ), 'alias' ) ).join( ' ' ) );
   },
 
   /**
@@ -35,10 +37,14 @@ module.exports = {
    * @return {Promise}
    */
 
-  fetch: (params) => {
+  fetch: ( params ) => {
+    console.log( 'cc' );
+    console.log( Product.schema.paths );
     return Product
-      .findOne(_.pick(params, _.keys(Product.schema.paths)))
-      .populate(_.keys(_.groupBy(_.reject(strapi.models.product.associations, {autoPopulate: false}), 'alias')).join(' '));
+      .findOne( _.pick( params, _.keys( Product.schema.paths ) ) )
+      .populate( _.keys( _.groupBy( _.reject( strapi.models.product.associations, {
+        autoPopulate: false
+      } ), 'alias' ) ).join( ' ' ) );
   },
 
   /**
@@ -47,11 +53,13 @@ module.exports = {
    * @return {Promise}
    */
 
-  add: async (values) => {
-    const query = await Product.create(_.omit(values, _.keys(_.groupBy(strapi.models.product.associations, 'alias'))));
+  add: async ( values ) => {
+    const query = await Product.create( _.omit( values, _.keys( _.groupBy( strapi.models.product.associations, 'alias' ) ) ) );
     const data = query.toJSON ? query.toJSON() : query;
 
-    await strapi.hook.mongoose.manageRelations('product', _.merge(data, { values }));
+    await strapi.hook.mongoose.manageRelations( 'product', _.merge( data, {
+      values
+    } ) );
 
     return query;
   },
@@ -62,12 +70,16 @@ module.exports = {
    * @return {Promise}
    */
 
-  edit: async (params, values) => {
+  edit: async ( params, values ) => {
     // Note: The current method will return the full response of Mongo.
     // To get the updated object, you have to execute the `findOne()` method
     // or use the `findOneOrUpdate()` method with `{ new:true }` option.
-    await strapi.hook.mongoose.manageRelations('product', _.merge(_.clone(params), { values }));
-    return Product.update(params, values, { multi: true });
+    await strapi.hook.mongoose.manageRelations( 'product', _.merge( _.clone( params ), {
+      values
+    } ) );
+    return Product.update( params, values, {
+      multi: true
+    } );
   },
 
   /**
@@ -79,18 +91,33 @@ module.exports = {
   remove: async params => {
     // Note: To get the full response of Mongo, use the `remove()` method
     // or add spent the parameter `{ passRawResult: true }` as second argument.
-    const data = await Product.findOneAndRemove(params, {})
-      .populate(_.keys(_.groupBy(_.reject(strapi.models.product.associations, {autoPopulate: false}), 'alias')).join(' '));
+    const data = await Product.findOneAndRemove( params, {} )
+      .populate( _.keys( _.groupBy( _.reject( strapi.models.product.associations, {
+        autoPopulate: false
+      } ), 'alias' ) ).join( ' ' ) );
 
-    _.forEach(Product.associations, async association => {
-      const search = (_.endsWith(association.nature, 'One')) ? { [association.via]: data._id } : { [association.via]: { $in: [data._id] } };
-      const update = (_.endsWith(association.nature, 'One')) ? { [association.via]: null } : { $pull: { [association.via]: data._id } };
+    _.forEach( Product.associations, async association => {
+      const search = ( _.endsWith( association.nature, 'One' ) ) ? {
+        [ association.via ]: data._id
+      } : {
+        [ association.via ]: {
+          $in: [ data._id ]
+        }
+      };
+      const update = ( _.endsWith( association.nature, 'One' ) ) ? {
+        [ association.via ]: null
+      } : {
+        $pull: {
+          [ association.via ]: data._id
+        }
+      };
 
-      await strapi.models[association.model || association.collection].update(
+      await strapi.models[ association.model || association.collection ].update(
         search,
-        update,
-        { multi: true });
-    });
+        update, {
+          multi: true
+        } );
+    } );
 
     return data;
   }

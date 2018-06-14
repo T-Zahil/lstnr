@@ -60,6 +60,9 @@
       "model": "user",
       "via": "products",
       "plugin": "users-permissions"
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }
