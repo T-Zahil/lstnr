@@ -2,15 +2,18 @@
   <div>
     <the-Menu></the-Menu>
     <nuxt/>
+    <the-Footer></the-Footer>
   </div>
 </template>
 
 <script>
 import theMenu from '~/components/theMenu.vue'
+import theFooter from '~/components/theFooter.vue'
 
 export default {
   components: {
-    theMenu
+    theMenu,
+    theFooter
   }
 }
 </script>
