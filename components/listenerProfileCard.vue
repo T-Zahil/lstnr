@@ -2,7 +2,7 @@
   <div class="card card-lstnr-profile">
     <div class="card-image" :style="{ backgroundColor: `#${product.color}`}">
       <figure class="image is-96x96">
-        <img :src="'http://localhost:1337' + product.logo.url" alt="The brand logo">
+        <img v-if="product.logo !== null" :src="'http://localhost:1337' + product.logo.url" alt="The brand logo">
       </figure>
       <div class="card-image-title">
         {{ product.name }}
@@ -12,11 +12,11 @@
     <div class="card-content">
       <div class="level">
         <div class="level-item">
-          <p>821</p>
+          <p v-bind:style="{ color: `#${product.color}`}">821</p>
           <span>lstnrs</span>
         </div>
         <div class="level-item">
-          <p>{{ product.ideas.length }}</p>
+          <p v-bind:style="{ color: `#${product.color}`}">{{ product.ideas.length }}</p>
           <span>feedbacks</span>
         </div>
       </div>
@@ -25,14 +25,12 @@
       </p>
       <div class="additionnal-info">
         <div class="additionnal-item">
-          <a href="#">
-            <span>Website <a :href="website"><span v-bind:style="{ color: `#${product.color}`, fontWeight: 'bold', paddingLeft: '20px' }">{{ product.website }}</span></a></span>
-          </a>
+          <span>Website <a :href="website"><span v-bind:style="{ color: `#${product.color}`, fontWeight: 'bold', paddingLeft: '20px' }">{{ product.website }}</span></a></span>
         </div>
       </div>
     </div>
     <footer class="card-footer">
-      <button class="card-footer-item button">Following</button>
+      <button class="card-footer-item button" v-bind:style="{ color: `#${product.color}`}">Following</button>
     </footer>
   </div>
 </template>
@@ -61,7 +59,6 @@
       margin: 1rem 0;
     }
     span {
-      color: #738bd7;
       text-transform: uppercase;
       font-family: 'Futura Bold';
       padding: 0 1rem;
@@ -75,7 +72,6 @@
         p {
           font-family: 'Futura Bold';
           font-size: 1.4rem;
-          color: #7289da;
         }
         span {
           font-family: 'Futura Bold';
@@ -92,7 +88,6 @@
         span {
           font-family: 'Futura Bold';
           font-size: 0.8rem;
-          color: #738bd7;
         }
       }
     }
@@ -105,7 +100,6 @@
     .card-footer-item {
       width: 90%;
       height: 2.5rem;
-      background: #7289da;
       border-radius: 40px;
       font-family: 'Futura Bold';
       font-size: 0.9rem;

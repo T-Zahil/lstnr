@@ -23,6 +23,7 @@
 <script>
 import FormLogin from '~/components/formLogin.vue'
 import { mapState } from 'vuex'
+import slug from 'slug'
 
 export default {
   props: ['product'],
@@ -46,7 +47,8 @@ export default {
             description: this.$data.description,
             product: this.product,
             author: this.user._id,
-            upvote: 0
+            upvote: 0,
+            slug: slug(this.$data.title)
           },
           {
             headers: {

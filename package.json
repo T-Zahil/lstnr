@@ -20,6 +20,7 @@
     "nuxt-buefy": "^0.0.4",
     "remove-markdown": "^0.3.0",
     "sass-loader": "^7.0.3",
+    "slug": "^0.9.1",
     "vue-markdown": "^2.2.4",
     "vuex-persistedstate": "^2.5.4"
   },

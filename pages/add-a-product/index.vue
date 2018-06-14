@@ -21,11 +21,18 @@
       <b-field label="Site internet">
         <b-input v-model="product.website"></b-input>
       </b-field>
-      <b-field label="Propriétaire">
-        <b-input v-model="product.company"></b-input>
+      <b-field label="Industry">
+          <b-select v-model="product.industry" placeholder="Select an industry">
+              <option
+                  v-for="industry in industries"
+                  :value="industry._id"
+                  :key="industry._id">
+                  {{ industry.name }}
+              </option>
+          </b-select>
       </b-field>
       <b-field label="Couleur">
-        <b-input v-model="product.color"></b-input>
+        <b-input v-model="product.color" type="color" placeholder="Enter a color in hexadecimal"></b-input>
       </b-field>
       <button class="button" @click="postProduct">Create your product</button>
     </section>
@@ -34,6 +41,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import slug from 'slug'
 
 export default {
   name: 'add-a-product',
@@ -44,14 +52,20 @@ export default {
         desc: '',
         website: '',
         company: '',
-        color: '',
+        color: '000000',
         files: '',
-        logo: ''
+        logo: '',
+        industry: ''
       }
     }
   },
   computed: {
     ...mapState(['token', 'user'])
+  },
+  async asyncData({ app, route, error }) {
+      let response = await app.$axios.get(`industry`)
+      const industries = response.data
+      return { industries }
   },
   methods: {
     async postProduct() {
@@ -60,10 +74,13 @@ export default {
         .$post(
           '/product',
           {
-            name: this.$data.product.name,
+            name: this.capitalizeFirstLetter(this.$data.product.name),
             description: this.$data.product.desc,
             website: this.$data.product.website,
-            color: this.$data.product.color
+            color: this.$data.product.color,
+            slug: slug(this.$data.product.name.toLowerCase()),
+            owner: this.user._id,
+            industry: this.$data.product.industry
           },
           {
             headers: {
@@ -73,11 +90,14 @@ export default {
         )
         .then(function(response) {
           self.$toast.open({
-            duration: 2000,
-            message: `Your feedback has been successfully added`,
+            duration: 3000,
+            message: `Your Product has been successfully added, redirecting to product page in a second`,
             type: 'is-success'
           })
-          window.location.reload(true)
+          console.log('/' + slug(self.$data.product.name.toLowerCase()))
+          setTimeout(() => {
+            window.location.href = '/' + slug(self.$data.product.name.toLowerCase());
+          }, 3000)
         })
         .catch(function(error) {
           console.log(error)
@@ -98,6 +118,9 @@ export default {
             })
           }
         })
+    },
+    capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
     }
   }
 }
