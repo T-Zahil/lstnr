@@ -56,7 +56,7 @@ export default {
 <style lang="scss">
 .footer {
   padding: 3rem 0 0 0;
-  background-color: #f7f7f7;
+  background-color: #eee;
   > div {
     padding: 2.5rem;
     background-color: #fff;

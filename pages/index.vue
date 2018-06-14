@@ -89,7 +89,7 @@ export default {
   padding: 3rem 0;
   margin-top: 6rem;
   background-image: url('../assets/hero-bg.png');
-  background-color: #f7f7f7;
+  background-color: #eee;
   background-size: auto 100%;
   background-repeat: no-repeat;
   .hero {
@@ -146,6 +146,6 @@ export default {
   }
 }
 .wrapper {
-  background-color: #f7f7f7;
+  background-color: #eee;
 }
 </style>
