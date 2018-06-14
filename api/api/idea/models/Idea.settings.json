@@ -31,14 +31,14 @@
       "type": "text",
       "required": true
     },
+    "product": {
+      "model": "product",
+      "via": "ideas"
+    },
     "author": {
       "model": "user",
       "via": "ideas",
       "plugin": "users-permissions"
-    },
-    "product": {
-      "model": "product",
-      "via": "ideas"
     }
   }
 }
