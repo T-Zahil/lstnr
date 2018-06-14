@@ -54,7 +54,7 @@ import lstnrWeek from '~/components/lstnrWeek.vue'
 import lstnrPopular from '~/components/lstnrPopular.vue'
 import popularUsers from '~/components/popularUsers.vue'
 import popularIdeas from '~/components/popularIdeas.vue'
-import FormLogin from '~/components/formLogin.vue'
+import FormRegister from '~/components/formRegister.vue'
 
 export default {
   components: {
@@ -63,7 +63,7 @@ export default {
     lstnrPopular,
     popularUsers,
     popularIdeas,
-    FormLogin
+    FormRegister
   },
   async asyncData({ app, route, error }) {
     let response = await app.$axios.get(`product`)
@@ -74,7 +74,7 @@ export default {
     cardModal() {
       this.$modal.open({
         parent: this,
-        component: FormLogin,
+        component: FormRegister,
         hasModalCard: true
       })
     }
