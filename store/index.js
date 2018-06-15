@@ -12,6 +12,7 @@ const store = () => {
       user: false,
       token: false,
       upvotes: [],
+      congrats: false,
     },
     mutations: {
       loggin(state, payload) {
@@ -24,6 +25,9 @@ const store = () => {
       },
       upvote(state, upvoteId) {
         state.upvotes = [...state.upvotes, upvoteId];
+      },
+      congrats(state) {
+        state.congrats = true;
       }
     }
   } )

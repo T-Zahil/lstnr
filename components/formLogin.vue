@@ -33,12 +33,17 @@
 
 <script>
     import FormLogin from './formLogin.vue';
+    import celebrationModal from '~/components/celebrationModal.vue'
+    import { mapState } from 'vuex'
     export default {
       data() {
         return {
           email: '',
           password: '',
         }
+      },
+      computed: {
+        ...mapState(['congrats'])
       },
       methods: {
         async login() {
@@ -53,9 +58,17 @@
                 message: `Welcome back ${response.user.username}`,
                 type: 'is-success'
               });
-
               self.$store.commit('loggin', { user: response.user, jwt: response.jwt });
               self.$parent.close();
+              if(response.user.points === 1 && !self.congrats) {
+                self.$modal.open({
+                  parent: self,
+                  component: celebrationModal,
+                  hasModalCard: true
+                })
+                self.$store.commit('congrats');
+              }
+
             })
             .catch(function (error){
               self.$toast.open({
