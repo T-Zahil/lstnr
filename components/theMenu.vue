@@ -22,19 +22,11 @@
           <nuxt-link to="/">Home</nuxt-link>
         </div>
         <div class="navbar-item">
-          <a href="#">
-            Platforms
-          </a>
-        </div>
-        <div class="navbar-item">
-          <a href="#">
-            Our roadmap
-          </a>
-        </div>
-        <div class="navbar-item">
-          <a href="#">
-            FAQ
-          </a>
+          <nuxt-link to="/add-a-product">
+            <button v-if="user" class="button is-primary is-medium">
+              Add a product
+            </button>
+          </nuxt-link>
         </div>
       </div>
       <div class="navbar-end">

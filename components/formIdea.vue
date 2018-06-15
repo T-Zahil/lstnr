@@ -48,7 +48,7 @@ export default {
             product: this.product,
             author: this.user._id,
             upvote: 0,
-            slug: slug(this.$data.title)
+            slug: slug(this.$data.title.toLowerCase())
           },
           {
             headers: {

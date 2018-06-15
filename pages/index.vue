@@ -26,24 +26,14 @@
     <div :class="{wrapper: true, connected: user}">
       <div class="container">
         <div class="columns">
-          <div class="column is-8">
-            <lstnr-Week></lstnr-Week>
-          </div>
-          <div class="column is-4">
-            <popular-users></popular-users>
-          </div>
-        </div>
-        <div class="columns">
           <div class="column">
             <lstnr-Popular :products="products"></lstnr-Popular>
           </div>
         </div>
         <div class="columns">
-          <div class="column is-2"></div>
-          <div class="column is-8">
+          <div class="column is-12">
             <popular-ideas :ideas="ideas"></popular-ideas>
           </div>
-          <div class="column is-2"></div>
         </div>
       </div>
     </div>
