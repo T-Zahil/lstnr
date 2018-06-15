@@ -1,11 +1,9 @@
 <template>
   <nav class="navbar is-white is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
-        <nuxt-link to="/">
-          <img src="~/assets/logo.png">
-        </nuxt-link>
-      </a>
+      <nuxt-link to="/" class="navbar-item">
+        <img src="~/assets/logo.png">
+      </nuxt-link>
       <div class="navbar-burger burger" @click="toggleBurger" :class="{'is-active': isBurgerActive}" data-target="navbar-Lstnr">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>

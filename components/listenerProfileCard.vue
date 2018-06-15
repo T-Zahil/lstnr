@@ -2,7 +2,11 @@
   <div class="card card-lstnr-profile">
     <div class="card-image" :style="{ backgroundColor: `#${product.color}`}">
       <figure class="image is-96x96">
+<<<<<<< HEAD
         <img v-if="product.logo !== null" :src="'http://localhost:1337' + product.logo.url" alt="The brand logo">
+=======
+        <img :src="'http://api-lstnr.thomas-sanlis.com' + product.logo.url" alt="The brand logo">
+>>>>>>> origin/master
       </figure>
       <div class="card-image-title">
         {{ product.name }}
@@ -25,7 +29,17 @@
       </p>
       <div class="additionnal-info">
         <div class="additionnal-item">
+<<<<<<< HEAD
           <span>Website <a :href="website"><span v-bind:style="{ color: `#${product.color}`, fontWeight: 'bold', paddingLeft: '20px' }">{{ product.website }}</span></a></span>
+=======
+          <a href="#">
+            <span>Website
+              <a :href="website">
+                <span v-bind:style="{ color: `#${product.color}`, fontWeight: 'bold', paddingLeft: '20px' }">{{ product.website }}</span>
+              </a>
+            </span>
+          </a>
+>>>>>>> origin/master
         </div>
       </div>
     </div>
@@ -47,9 +61,18 @@
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
     figure {
+      width: 96px;
+      height: 96px;
+      margin-bottom: 0.5rem;
       box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      padding: 0.5rem;
+      background-color: #fff;
       img {
-        border-radius: 10px;
+        border-radius: 8px;
       }
     }
     .card-image-title {
@@ -114,7 +137,7 @@
 
 <script>
 export default {
-  props: ['product'],
+  props: ['product']
 }
 </script>
 

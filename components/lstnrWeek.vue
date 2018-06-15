@@ -199,7 +199,7 @@ export default {
             }
             span {
               font-family: 'Futura Bold';
-              font-size: 0.5rem;
+              font-size: 0.6rem;
               color: #e0e0e0;
               text-transform: uppercase;
             }

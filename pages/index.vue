@@ -34,14 +34,14 @@
           </div>
         </div>
         <div class="columns">
-          <div class="column is-8">
+          <div class="column">
             <lstnr-Popular :products="products"></lstnr-Popular>
           </div>
         </div>
         <div class="columns">
           <div class="column is-2"></div>
           <div class="column is-8">
-            <popular-ideas></popular-ideas>
+            <popular-ideas :ideas="ideas"></popular-ideas>
           </div>
           <div class="column is-2"></div>
         </div>
@@ -56,7 +56,7 @@ import lstnrWeek from '~/components/lstnrWeek.vue'
 import lstnrPopular from '~/components/lstnrPopular.vue'
 import popularUsers from '~/components/popularUsers.vue'
 import popularIdeas from '~/components/popularIdeas.vue'
-import FormLogin from '~/components/formLogin.vue'
+import FormRegister from '~/components/formRegister.vue'
 
 export default {
   components: {
@@ -65,18 +65,20 @@ export default {
     lstnrPopular,
     popularUsers,
     popularIdeas,
-    FormLogin
+    FormRegister
   },
   async asyncData({ app, route, error }) {
     let response = await app.$axios.get(`product`)
     const products = response.data
-    return { products }
+    response = await app.$axios.get(`idea`)
+    const ideas = response.data
+    return { products, ideas }
   },
   methods: {
     cardModal() {
       this.$modal.open({
         parent: this,
-        component: FormLogin,
+        component: FormRegister,
         hasModalCard: true
       })
     }
@@ -89,7 +91,7 @@ export default {
   padding: 3rem 0;
   margin-top: 6rem;
   background-image: url('../assets/hero-bg.png');
-  background-color: #f7f7f7;
+  background-color: #eee;
   background-size: auto 100%;
   background-repeat: no-repeat;
   .hero {
@@ -146,6 +148,6 @@ export default {
   }
 }
 .wrapper {
-  background-color: #f7f7f7;
+  background-color: #eee;
 }
 </style>

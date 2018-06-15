@@ -13,7 +13,7 @@
     </div>
     <div class="card-content">
       <p>
-        {{ desc }}
+        {{ desc.substring(0, 100) + '...' }}
       </p>
     </div>
     <footer class="card-footer">
