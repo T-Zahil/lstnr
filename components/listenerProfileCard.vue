@@ -25,13 +25,11 @@
       </p>
       <div class="additionnal-info">
         <div class="additionnal-item">
-          <a href="#">
-            <span>Website
+            <span style="font-family: 'Futura Bold';font-size: 0.8rem;color: #e0e0e0;">Website
               <a :href="product.website">
                 <span v-bind:style="{ color: `#${product.color}`, fontWeight: 'bold', paddingLeft: '20px' }">{{ product.website }}</span>
               </a>
             </span>
-          </a>
         </div>
       </div>
     </div>
