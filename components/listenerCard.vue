@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="slug" tag="div" class="card card--small-lstnr">
+  <nuxt-link :to="'/'+slug" tag="div" class="card card--small-lstnr">
     <div class="card-image" :style="'background-color: #' + color">
       <figure class="image is-96x96">
         <img :src="image" alt="">

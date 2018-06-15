@@ -14,7 +14,7 @@
       <div class="navbar-start">
         <div class="navbar-item">
           <b-field>
-            <b-input placeholder="Search" type="search" icon="magnify">
+            <b-input @focus="addEnterListener" @blur="removeEnterListener" v-model="search" placeholder="Search" type="search" icon="magnify">
             </b-input>
           </b-field>
         </div>
@@ -74,7 +74,8 @@ export default {
   data() {
     return {
       test: 'empty',
-      isBurgerActive: false
+      isBurgerActive: false,
+      search: '',
     }
   },
   computed: {
@@ -86,6 +87,20 @@ export default {
     },
     logout() {
       this.$store.commit('logout')
+    },
+    addEnterListener() {
+      console.log('hidd');
+      document.addEventListener('keypress', this.sendSearch);
+    },
+    removeEnterListener() {
+      console.log('hiooo');
+      document.removeEventListener('keypress', this.sendSearch);
+    },
+    sendSearch(e) {
+      console.log('hi');
+      if(e.keyCode === 13) {
+        window.location.href = `/search/${this.$data.search}`;
+      }
     }
   },
   components: {
