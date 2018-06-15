@@ -2,11 +2,7 @@
   <div class="card card-lstnr-profile">
     <div class="card-image" :style="{ backgroundColor: `#${product.color}`}">
       <figure class="image is-96x96">
-<<<<<<< HEAD
         <img v-if="product.logo !== null" :src="'http://localhost:1337' + product.logo.url" alt="The brand logo">
-=======
-        <img :src="'http://api-lstnr.thomas-sanlis.com' + product.logo.url" alt="The brand logo">
->>>>>>> origin/master
       </figure>
       <div class="card-image-title">
         {{ product.name }}
@@ -29,9 +25,6 @@
       </p>
       <div class="additionnal-info">
         <div class="additionnal-item">
-<<<<<<< HEAD
-          <span>Website <a :href="website"><span v-bind:style="{ color: `#${product.color}`, fontWeight: 'bold', paddingLeft: '20px' }">{{ product.website }}</span></a></span>
-=======
           <a href="#">
             <span>Website
               <a :href="website">
@@ -39,7 +32,6 @@
               </a>
             </span>
           </a>
->>>>>>> origin/master
         </div>
       </div>
     </div>
