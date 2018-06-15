@@ -16,7 +16,7 @@
         <time class="card-time is-primary" :datetime="comment.createdAt">{{ `${new Date(comment.createdAt).toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' })} ${new Date(comment.createdAt).toLocaleTimeString()}` }}</time>
       </div>
       <div class="content-and-upvote">
-      <upvote :votes="comment.upvote" type="comment" :id="comment._id"></upvote>
+      <upvote :votes="comment.upvote" type="comment" :id="comment._id" :user="author"></upvote>
       <p class="content">
           {{ comment.description }}
       </p>

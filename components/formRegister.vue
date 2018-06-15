@@ -87,7 +87,8 @@
             email: this.$data.email,
             password: this.$data.password,
             'company-position': this.$data.companyPosition,
-            company: this.$data.company
+            company: this.$data.company,
+            points: 0,
           })
           .then(function(response) {
             self.$toast.open({

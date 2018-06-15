@@ -1,10 +1,10 @@
 <template>
-  <div class="idea columns">
+  <div class="idea columns" v-if="dataReady">
     <div class="column is-2">
-      <up-vote :votes="votes" type="idea" :id="id"></up-vote>
+      <up-vote :votes="votes" type="idea" :id="id" :user="author"></up-vote>
     </div>
     <div class="column desc">
-      <div class="subtitle" v-if="author">{{ author }}</div>
+      <div class="subtitle" v-if="author">{{ author.username }}</div>
       <nuxt-link :to="product + '/idea/' + slug">
         <h4>{{ title }}</h4>
       </nuxt-link>
@@ -74,6 +74,23 @@ export default {
   ],
   components: {
     upVote
+  },
+  data() {
+    return {
+      dataReady: false
+    }
+  },
+  async beforeMount() {
+    var self = this
+
+    const author = await this.$axios.$get(`/user/${this.author}`)
+      .then(function(response) {
+        self.author = response
+        self.dataReady = true;
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
   },
   methods: {
     isTooLong(content) {

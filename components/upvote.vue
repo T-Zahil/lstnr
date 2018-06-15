@@ -76,7 +76,7 @@
 import { mapState } from 'vuex'
 import FormLogin from '~/components/formLogin.vue'
 export default {
-  props: ['votes', 'type', 'id'],
+  props: ['votes', 'type', 'id', 'user'],
   computed: {
     formattedVotes() {
       return this.reverseString(
@@ -148,6 +148,15 @@ export default {
           });
         }
       });
+      this.user.points++;
+      const winpoint = await this.$axios.$put(`/user/${this.user._id}`, {
+        points: this.user.points
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${self.token}`
+        }
+      })
     }
   }
 }
