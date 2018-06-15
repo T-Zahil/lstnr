@@ -8,11 +8,11 @@
       </div>
     </div>
     <section class="section popularIdeas__content">
-      <idea :author="ideas[0].author.username + ' on ' + ideas[0].product.name" :title="ideas[0].title" :content="ideas[0].description" :votes="ideas[0].upvote" nbComments="2">
+      <idea :author="ideas[0].author.username + ' on ' + ideas[0].product.name" :title="ideas[0].title" :content="ideas[0].description" :votes="ideas[0].upvote" :product="ideas[0].product.slug" :slug="ideas[0].slug">
       </idea>
-      <idea :author="ideas[1].author.username + ' on ' + ideas[1].product.name" :title="ideas[1].title" :content="ideas[1].description" :votes="ideas[1].upvote" nbComments="2">
+      <idea :author="ideas[1].author.username + ' on ' + ideas[1].product.name" :title="ideas[1].title" :content="ideas[1].description" :votes="ideas[1].upvote" :product="ideas[1].product.slug" :slug="ideas[1].slug">
       </idea>
-      <idea :author="ideas[2].author.username + ' on ' + ideas[2].product.name" :title="ideas[2].title" :content="ideas[2].description" :votes="ideas[2].upvote" nbComments="2">
+      <idea :author="ideas[2].author.username + ' on ' + ideas[2].product.name" :title="ideas[2].title" :content="ideas[2].description" :votes="ideas[2].upvote" :product="ideas[2].product.slug" :slug="ideas[2].slug">
       </idea>
     </section>
   </section>
