@@ -10,7 +10,7 @@
              <listener-profile-card :product="product"></listener-profile-card>
           </div>
         </div>
-        <comment-card v-for="(comment, index) in comments" :key="index" :comment="comment"></comment-card>
+        <comment-card v-for="(comment, index) in comments" :key="index" :comment="comment" :product="product"></comment-card>
       </div>
     </section>
   </div>
@@ -71,6 +71,7 @@ export default {
       }
 
       for(let i = 0, l = comments.length; i < l; i++) {
+        console.log(comments[i].parent)
         if(comments[i].parent) {
           sortedComments[comments[i].parent].childs.push(comments[i]);
         }

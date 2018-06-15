@@ -21,7 +21,7 @@
         </div>
       </div>
       <p class="content">
-        {{ bio }}
+        {{ product.description }}
       </p>
       <div class="additionnal-info">
         <div class="additionnal-item">

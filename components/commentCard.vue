@@ -9,7 +9,7 @@
             </figure>
           </div>
           <div class="profile-content">
-            <p class="profile-name">{{ author.username }}</p>
+            <p class="profile-name">{{ author.username }} <b-tag v-if="product.owner._id === author._id" v-bind:style="{ marginLeft: '5px',color: 'white', backgroundColor: `#${product.color}`}">{{ `${product.name} team member` }}</b-tag></p>
             <p class="profile-info">{{ `${author['company-position']} @${author.company}` }}</p>
           </div>
         </div>
@@ -110,7 +110,7 @@ import { mapState } from 'vuex'
 import FormComment from '~/components/formComment.vue'
 
 export default {
-  props: ['comment'],
+  props: ['comment', 'product'],
   components: {
     upvote
   },

@@ -1,16 +1,16 @@
 <template>
   <div class="idea columns" v-if="dataReady">
     <div class="column is-2">
-      <up-vote :votes="votes" type="idea" :id="id" :user="author"></up-vote>
+      <up-vote :votes="votes" type="idea" :id="id" :user="ideaAuthor"></up-vote>
     </div>
     <div class="column desc">
-      <div class="subtitle" v-if="author">{{ author.username }}</div>
+      <div class="subtitle" v-if="ideaAuthor">{{ ideaAuthor.username }} {{ hp ? 'on' : ''}} <span style="color: #7957d5;">{{ hp ? capitalizeFirstLetter(product): '' }}</span></div>
       <nuxt-link :to="product + '/idea/' + slug">
-        <h4>{{ title }}</h4>
+          <h4>{{ title }}</h4>
+        <p v-if="isTooLong(content)">{{ content.substring(0, 300) + '...'}}</p>
+        <p v-else>{{ content }}</p>
+        <span>See comments</span>
       </nuxt-link>
-      <p v-if="isTooLong(content)">{{ content.substring(0, 300) + '...'}}</p>
-      <p v-else>{{ content }}</p>
-      <span>See comments</span>
     </div>
   </div>
 </template>
@@ -70,7 +70,8 @@ export default {
     'author',
     'slug',
     'product',
-    'id'
+    'id',
+    'hp'
   ],
   components: {
     upVote
@@ -81,16 +82,10 @@ export default {
     }
   },
   async beforeMount() {
-    var self = this
-
-    const author = await this.$axios.$get(`/user/${this.author}`)
-      .then(function(response) {
-        self.author = response
-        self.dataReady = true;
-      })
-      .catch(function(error) {
-        console.log(error)
-      })
+    this.getUser()
+  },
+  async updated() {
+    this.getUser()
   },
   methods: {
     isTooLong(content) {
@@ -99,6 +94,21 @@ export default {
       } else {
         return false
       }
+    },
+    capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    },
+    async getUser() {
+      var self = this
+
+      const author = await this.$axios.$get(`/user/${this.author}`)
+      .then(function(response) {
+        self.ideaAuthor = response
+        self.dataReady = true;
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
     }
   }
 }

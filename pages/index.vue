@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="columns header">
+    <div v-if="!user" class="columns header">
       <section class="hero column is-7">
         <div class="hero-body">
           <h1 class="title">
@@ -23,7 +23,7 @@
         <img src="~/assets/hero.jpg" alt="" class="level-item">
       </div>
     </div>
-    <div class="wrapper">
+    <div :class="{wrapper: true, connected: user}">
       <div class="container">
         <div class="columns">
           <div class="column is-8">
@@ -57,6 +57,7 @@ import lstnrPopular from '~/components/lstnrPopular.vue'
 import popularUsers from '~/components/popularUsers.vue'
 import popularIdeas from '~/components/popularIdeas.vue'
 import FormRegister from '~/components/formRegister.vue'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -66,6 +67,9 @@ export default {
     popularUsers,
     popularIdeas,
     FormRegister
+  },
+  computed: {
+    ...mapState(['token', 'user'])
   },
   async asyncData({ app, route, error }) {
     let response = await app.$axios.get(`product`)
@@ -149,5 +153,9 @@ export default {
 }
 .wrapper {
   background-color: #eee;
+}
+
+.wrapper.connected {
+  margin-top: 6rem;
 }
 </style>

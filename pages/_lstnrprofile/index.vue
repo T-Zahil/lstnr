@@ -9,11 +9,10 @@
               <button @click="feedbackModal" class="button">give feedback</button>
             </div>
             <div class="colum is-4 sorting">
-              <span>tags: </span>
+              <span>sort: </span>
               <ul>
-                <li>all</li>
-                <li>popular</li>
-                <li>newest</li>
+                <li :class="{'tag-selected' : isNewest }" @click="sortByDate">date</li>
+                <li :class="{'tag-selected' : isPopular }" @click="sortByPopularity">popularity</li>
               </ul>
             </div>
           </div>
@@ -44,7 +43,9 @@ export default {
       product: {},
       logo: {},
       industry: {},
-      dataReady: false
+      dataReady: false,
+      isPopular: false,
+      isNewest: false
     }
   },
   async beforeMount() {
@@ -56,6 +57,7 @@ export default {
         self.product = response
         self.industry = response.industry
         self.logo = response.logo
+        self.sortByDate();
         self.dataReady = true
       })
       .catch(function(error) {
@@ -72,6 +74,33 @@ export default {
         component: formIdea,
         hasModalCard: true
       })
+    },
+    sortByPopularity() {
+      this.$data.isPopular = true;
+      this.$data.isNewest = false;
+      this.$data.product.ideas.sort(this.compareDesc);
+    },
+    sortByDate() {
+      this.$data.isPopular = false;
+      this.$data.isNewest = true;
+      this.$data.product.ideas.sort(this.compareDate);
+    },
+    sortByAll() {
+
+    },
+    compareDate(a,b) {
+      if (a.createdAt > b.createdAt)
+        return -1;
+      if (a.createdAt < b.createdAt)
+        return 1;
+      return 0;
+    },
+    compareDesc(a,b) {
+      if (a.upvote > b.upvote)
+        return -1;
+      if (a.upvote < b.upvote)
+        return 1;
+      return 0;
     }
   }
 }
@@ -118,18 +147,15 @@ export default {
             font-family: 'Futura Bold';
             font-size: 0.5rem;
             text-transform: uppercase;
-            &:first-child {
-              background: #732ffb;
-              margin-right: 1rem;
-              color: #ffffff;
-            }
-            &:last-child {
-              border-left: 1px solid #e0e0e0;
-              color: #e0e0e0;
-            }
+            cursor: pointer;
           }
         }
       }
+    }
+
+    .tag-selected {
+      background: #732ffb;
+      color: #ffffff;
     }
     .side {
       padding-top: 0;
